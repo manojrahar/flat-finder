@@ -61,3 +61,13 @@ def test_photo_links_skip_floor_plans():
     links = mb_parse.photo_links("2025/09/18/Project-Photo-9-X-5021659_410_1440.jpg,2025/07/01/Floor-Plan-36-X_505_661.jpg")
     assert links == [{"thumb": "https://img.staticmb.com/mbimages/project/Photo_h310_w462/2025/09/18/Project-Photo-9-X-5021659_410_1440_310_462.jpg",
                       "full": "https://img.staticmb.com/mbimages/project/2025/09/18/Project-Photo-9-X-5021659_410_1440.jpg"}]
+
+
+def test_card_to_project_converts_sqm_and_prop_ty():
+    p = mb_parse.card_to_project({
+        "psmid": "5098933", "psmName": "Purple Melodia", "projArea": 7186, "projAreaUnitDesc": "Sq-m",
+        "propTy": "10002", "pdpUrl": "/purple-melodia-jaipur-pdpid-4d42",
+    })
+    assert p["acres"] == 1.78
+    assert p["type_codes"] == ["10002"]
+    assert p["url"] == "https://www.magicbricks.com/purple-melodia-jaipur-pdpid-4d42"

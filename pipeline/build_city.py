@@ -21,14 +21,15 @@ import verified
 ROOT = pathlib.Path(__file__).parent
 OUT = ROOT / "out"
 WEB = ROOT.parent / "web" / "public" / "data"
-GENERIC = {"the", "of", "at", "in", "sector", "gurgaon", "gurugram", "residency", "residences", "homes",
+GENERIC = {"the", "of", "at", "in", "sector", "gurgaon", "gurugram", "jaipur", "residency", "residences", "homes",
            "apartments", "apartment", "towers", "tower", "heights", "city", "phase", "park", "estate",
            "floors", "society", "cghs", "group", "housing", "and", "by", "new", "greens", "green", "plaza"}
 TOWER_H = 55.0  # visual default height (m) for generated apartment towers; shapes are not data
 
 
-def tokens(name):
-    return {t for t in re.findall(r"[a-z0-9]+", (name or "").lower()) if t not in GENERIC and len(t) > 2}
+def tokens(name, extra_stop=()):
+    stop = GENERIC | set(extra_stop)
+    return {t for t in re.findall(r"[a-z0-9]+", (name or "").lower()) if t not in stop and len(t) > 2}
 
 
 UNIT_KIND = {"10002": "apartment", "10021": "apartment", "10003": "builder floor", "10000": "plot", "10017": "villa",
@@ -53,6 +54,8 @@ def kind_of(p):
         return "villa"
     if "plot" in t or "land" in t:
         return "plot"
+    if "commercial" in t or "office" in t or "shop" in t or "retail" in t or "showroom" in t:
+        return "commercial"
     return "apartment" if re.search(r"\bbhk\b", t) else "other"
 
 
@@ -155,11 +158,11 @@ def match_verified(v, projects, taken=()):
     return best
 
 
-def events_for(s):
+def events_for(s, city_name="Gurugram"):
     ev = []
     sid = s["id"]
     src = s.get("url")
-    ev.append({"sid": sid, "step": "Located on map", "finding": f"{s['locality'] or 'Gurgaon'} · {s['lat']:.4f}, {s['lng']:.4f}", "url": src})
+    ev.append({"sid": sid, "step": "Located on map", "finding": f"{s['locality'] or city_name} · {s['lat']:.4f}, {s['lng']:.4f}", "url": src})
     bits = [f"{int(s['towers'])} towers" if s.get("towers") else None, f"{int(s['units']):,} units" if s.get("units") else None,
             f"{s['acres']} acres" if s.get("acres") else None]
     if any(bits):
@@ -222,11 +225,28 @@ def shapes_for(s, area, bld_grid, sid_seed):
     return feats, shape
 
 
+def in_bbox(p, bbox):
+    s, w, n, e = bbox
+    return bool(p.get("lat") and p.get("lng") and s < p["lat"] < n and w < p["lng"] < e)
+
+
+def normalize_coords(p, bbox):
+    """Recover swapped (lng, lat) portal entries when swapping puts them cleanly inside bbox."""
+    if in_bbox(p, bbox):
+        return p
+    if p.get("lat") and p.get("lng"):
+        swapped = {**p, "lat": p["lng"], "lng": p["lat"]}
+        if in_bbox(swapped, bbox):
+            return swapped
+    return None
+
+
 def main(city="gurgaon"):
     cfg = json.loads((ROOT.parent / "data" / "cities.json").read_text())[city]
     out = OUT / city
     raw = json.loads((out / "mb_projects.json").read_text())
-    located = [p for p in raw if p.get("lat") and p.get("lng") and 28.2 < p["lat"] < 28.7 and 76.7 < p["lng"] < 77.3]
+    bbox = cfg.get("filter_bbox") or cfg["bbox"]
+    located = [q for p in raw if (q := normalize_coords(p, bbox)) is not None]
     not_located = len(raw) - len(located)
     projects = dedupe(located)
     areas = json.loads((out / "osm_areas.geojson").read_text())["features"]
@@ -322,24 +342,27 @@ def main(city="gurgaon"):
                                     "checked_by": "OCR of the brochure", "source": b["url"], "page": str(pg["page"])})
             s["ai_read"] = True
 
-    # bedroom sizes OCR'd from HRERA filings (approved building plans, floor plan drawings); same caution as brochures
-    hr_file = vdir / f"{city}-hrera.json"
-    hrera = json.loads(hr_file.read_text())["societies"] if hr_file.exists() else {}
-    for sid, h in hrera.items():
-        s = by_sid.get(sid)
-        if not s or s.get("verified"):
-            continue
-        seen = set()
-        for doc in h.get("read", []):
-            for pg in doc.get("pages", []):
-                beds = sorted(tuple(x["ft"]) for x in pg["bedrooms"])
-                if not beds or tuple(beds) in seen:
-                    continue
-                seen.add(tuple(beds))
-                s["unit_types"].append({"label": f"{pg['bhk']} BHK plan" if pg.get("bhk") else "Unit plan", "bhk": pg.get("bhk"),
-                                        "bedrooms": [list(x) for x in beds], "rooms_complete": False, "confidence": "ocr",
-                                        "checked_by": f"OCR of HRERA filing: {doc['doc'].title()[:60]}", "source": h["project"], "page": str(pg["page"])})
-                s["ai_read"] = True
+    # bedroom sizes OCR'd from RERA filings (approved building plans, floor plan drawings); same caution as brochures
+    rera_label = cfg.get("rera_name") or "RERA"
+    rera_files = [p for p in (vdir / f"{city}-hrera.json", vdir / f"{city}-rera.json") if p.exists()]
+    for hr_file in rera_files:
+        hrera = json.loads(hr_file.read_text())["societies"]
+        for sid, h in hrera.items():
+            s = by_sid.get(sid)
+            if not s or s.get("verified"):
+                continue
+            seen = set()
+            for doc in h.get("read", []):
+                for pg in doc.get("pages", []):
+                    beds = sorted(tuple(x["ft"]) for x in pg["bedrooms"])
+                    if not beds or tuple(beds) in seen:
+                        continue
+                    seen.add(tuple(beds))
+                    src_url = doc.get("url") or h.get("project")
+                    s["unit_types"].append({"label": f"{pg['bhk']} BHK plan" if pg.get("bhk") else "Unit plan", "bhk": pg.get("bhk"),
+                                            "bedrooms": [list(x) for x in beds], "rooms_complete": False, "confidence": "ocr",
+                                            "checked_by": f"OCR of {rera_label} filing: {doc['doc'].title()[:60]}", "source": src_url, "page": str(pg["page"])})
+                    s["ai_read"] = True
 
     # floor plans found on other sites by the plan finder, then OCR'd (found_ocr.py)
     fd_file = vdir / f"{city}-found.json"
@@ -362,6 +385,15 @@ def main(city="gurgaon"):
 
     # smallest-bedroom lower bounds from unit size, for units whose plans are unread
     room_model = rooms_model.fit(ver)
+    if not room_model:
+        # fallback: fit on OCR-complete units with known size in this city, or verified reference data
+        ocr_fit = [{"unit_types": [{
+            "bhk": u.get("bhk"),
+            "super_sqft": u["size_range"][0] if u.get("size_range") and len(set(u["size_range"])) == 1 else u.get("size_sqft"),
+            "bedrooms": u.get("bedrooms"),
+            "rooms_complete": u.get("rooms_complete"),
+        } for s in societies for u in s["unit_types"] if u.get("rooms_complete") and u.get("bedrooms")]}]
+        room_model = rooms_model.fit(ocr_fit)
     for s in societies:
         for u in s["unit_types"]:
             if not u.get("bedrooms"):
@@ -432,17 +464,22 @@ def main(city="gurgaon"):
         f, shape = shapes_for(s, area, bld_grid, i)
         s["shape"] = shape
         shapes.extend(f)
-        events.extend(events_for(s))
+        events.extend(events_for(s, cfg["name"]))
 
     WEB.mkdir(parents=True, exist_ok=True)
-    doc = {"city": {"id": city, "name": cfg["name"], "center": cfg["center"], "zoom": cfg["zoom"]},
+    sources = ["Magicbricks project pages", "OpenStreetMap contributors"]
+    if rera_files:
+        sources.append(rera_label)
+    if ver or brochures:
+        sources.append("Builder brochures (verified rows)" if ver else "Builder brochures (OCR)")
+    doc = {"city": {"id": city, "name": cfg["name"], "rera_name": rera_label, "center": cfg["center"], "zoom": cfg["zoom"]},
             "price_model": model,
             "room_model": room_model,
             "counts": {"listed": len(raw), "on_map": len(societies), "not_located": not_located,
                        "ai_read": sum(1 for s in societies if s.get("ai_read")),
                        "for_sale": sum(s["sale_count"] or 0 for s in societies), "for_rent": sum(s["rent_count"] or 0 for s in societies),
                        "verified": sum(s["verified"] for s in societies)},
-            "sources": ["Magicbricks project pages", "OpenStreetMap contributors", "HRERA Gurugram", "Builder brochures (verified rows)"],
+            "sources": sources,
             "societies": societies, "events": events}
     details = {}
     for s in societies:  # heavy per-society text, loaded only when a card opens
@@ -458,9 +495,9 @@ def main(city="gurgaon"):
             f["properties"]["h"] = round(f["properties"]["h"])
     (WEB / f"{city}-shapes.geojson").write_text(json.dumps({"type": "FeatureCollection", "features": shapes}, separators=(",", ":")))
     from collections import Counter
-    built = sorted(p.stem for p in WEB.glob("*.json") if p.stem != "cities")
     all_cfg = json.loads((ROOT.parent / "data" / "cities.json").read_text())
-    (WEB / "cities.json").write_text(json.dumps({c: {"name": all_cfg[c]["name"]} for c in built if c in all_cfg}))
+    built = sorted(p.stem for p in WEB.glob("*.json") if p.stem in all_cfg)
+    (WEB / "cities.json").write_text(json.dumps({c: {"name": all_cfg[c]["name"]} for c in built}))
     print(doc["counts"], Counter(s["shape"] for s in societies), Counter(s["kind"] for s in societies), "features", len(shapes))
 
 

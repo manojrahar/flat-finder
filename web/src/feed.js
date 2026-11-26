@@ -23,6 +23,7 @@ export function createFeed(el, modeEl, { events, byId }) {
   function ambient() {
     stop();
     modeEl.textContent = 'replay';
+    if (!ambientPool.length) return;
     let i = Math.floor(Math.random() * ambientPool.length);
     timer = setInterval(() => push(ambientPool[i++ % ambientPool.length]), 1900);
   }

@@ -32,12 +32,55 @@ def page_bhk(boxes):
     return max(set(found), key=found.count) if found else None
 
 
+def _render_pages(pdf, tmp, prefix, dpi, page_nums=None):
+    """Render PDF pages to PNGs via pdftoppm if installed, else macOS Quartz CGPDFDocument."""
+    if shutil.which("pdftoppm"):
+        if page_nums is None:
+            subprocess.run(["pdftoppm", "-r", str(dpi), "-l", str(MAX_PAGES), "-png", str(pdf), str(tmp / prefix)], capture_output=True, timeout=600)
+        else:
+            for n in page_nums:
+                subprocess.run(["pdftoppm", "-r", str(dpi), "-f", str(n), "-l", str(n), "-png", str(pdf), str(tmp / prefix)], capture_output=True, timeout=300)
+        return sorted(tmp.glob(f"{prefix}-*.png"))
+    import Quartz
+    from Foundation import NSURL
+    doc = Quartz.CGPDFDocumentCreateWithURL(NSURL.fileURLWithPath_(str(pdf)))
+    if not doc:
+        return []
+    total = min(Quartz.CGPDFDocumentGetNumberOfPages(doc), MAX_PAGES)
+    targets = range(1, total + 1) if page_nums is None else [n for n in page_nums if 1 <= n <= total]
+    out = []
+    cs = Quartz.CGColorSpaceCreateDeviceRGB()
+    for n in targets:
+        page = Quartz.CGPDFDocumentGetPage(doc, n)
+        if not page:
+            continue
+        rect = Quartz.CGPDFPageGetBoxRect(page, Quartz.kCGPDFCropBox)
+        scale = dpi / 72.0
+        w, h = max(1, int(rect.size.width * scale)), max(1, int(rect.size.height * scale))
+        if w * h > 64_000_000:
+            scale *= (64_000_000 / (w * h)) ** 0.5
+            w, h = max(1, int(rect.size.width * scale)), max(1, int(rect.size.height * scale))
+        ctx = Quartz.CGBitmapContextCreate(None, w, h, 8, w * 4, cs, Quartz.kCGImageAlphaPremultipliedLast)
+        Quartz.CGContextSetRGBFillColor(ctx, 1, 1, 1, 1)
+        Quartz.CGContextFillRect(ctx, Quartz.CGRectMake(0, 0, w, h))
+        Quartz.CGContextScaleCTM(ctx, scale, scale)
+        Quartz.CGContextTranslateCTM(ctx, -rect.origin.x, -rect.origin.y)
+        Quartz.CGContextDrawPDFPage(ctx, page)
+        img = Quartz.CGBitmapContextCreateImage(ctx)
+        png = tmp / f"{prefix}-{n:03d}.png"
+        dest = Quartz.CGImageDestinationCreateWithURL(NSURL.fileURLWithPath_(str(png)), "public.png", 1, None)
+        Quartz.CGImageDestinationAddImage(dest, img, None)
+        Quartz.CGImageDestinationFinalize(dest)
+        out.append(png)
+    return out
+
+
 def read_brochure(job):
     sid, url = job
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="ff-broch-"))
     try:
         pdf = tmp / "b.pdf"
-        # curl uses the macOS trust store (HRERA's certificate chain fails in Python's own store)
+        # curl uses the macOS trust store (HRERA/RajRERA certificate chains fail in Python's own store)
         r = subprocess.run(["curl", "-sL", "-A", UA, "--max-time", "180", "--max-filesize", str(int(MAX_MB * 1e6)), "-o", str(pdf), url], capture_output=True)
         if r.returncode == 63:
             return sid, {"url": url, "status": "too large"}
@@ -47,9 +90,8 @@ def read_brochure(job):
             return sid, {"url": url, "status": "not a pdf"}
         from ocr import ocr
         # pass 1: a quick low-resolution look at every page, to find the ones that look like unit plans
-        subprocess.run(["pdftoppm", "-r", str(SCAN_DPI), "-l", str(MAX_PAGES), "-png", str(pdf), str(tmp / "s")], capture_output=True, timeout=600)
         scored = []
-        for png in sorted(tmp.glob("s-*.png")):
+        for png in _render_pages(pdf, tmp, "s", SCAN_DPI):
             words = " ".join(t for t, *_ in ocr(png))
             hits = len(PLAN_PAGE.findall(words))
             if hits >= 3 and re.search(r"BED|BHK|B\.H\.K", words, re.I):
@@ -58,14 +100,13 @@ def read_brochure(job):
         candidates = sorted(n for _, n in sorted(scored, reverse=True)[:MAX_PLAN_PAGES])
         # pass 2: only those pages at full resolution, read in tiles
         pages = []
-        for n in candidates:
-            subprocess.run(["pdftoppm", "-r", str(DPI), "-f", str(n), "-l", str(n), "-png", str(pdf), str(tmp / "p")], capture_output=True, timeout=300)
-            for png in tmp.glob("p-*.png"):
-                boxes = ocr(png)
-                beds = plan_ocr.bedrooms_from_boxes(boxes)
-                if beds:
-                    pages.append({"page": n, "bhk": page_bhk(boxes), "bedrooms": beds})
-                png.unlink()
+        for png in _render_pages(pdf, tmp, "p", DPI, candidates):
+            n = int(png.stem.split("-")[-1])
+            boxes = ocr(png)
+            beds = plan_ocr.bedrooms_from_boxes(boxes)
+            if beds:
+                pages.append({"page": n, "bhk": page_bhk(boxes), "bedrooms": beds})
+            png.unlink()
         return sid, {"url": url, "status": "read" if pages else "no unit plans found", "pages": pages}
     except Exception as e:
         return sid, {"url": url, "status": "error", "error": str(e)[:160]}
@@ -73,16 +114,18 @@ def read_brochure(job):
         shutil.rmtree(tmp, ignore_errors=True)
 
 
-def main(city="gurgaon"):
+def main(city="gurgaon", limit=None):
     data = json.loads((ROOT.parent / "web" / "public" / "data" / f"{city}.json").read_text())
     out_file = ROOT.parent / "data" / "verified" / f"{city}-brochures.json"
     done = json.loads(out_file.read_text())["brochures"] if out_file.exists() else {}
     def has_rooms(s):
         return any(u.get("bedrooms") or u.get("ai") for u in s["unit_types"])
     pool = [s for s in data["societies"] if s["kind"] in ("apartment", "builder floor")
-            and (s.get("brochure_url") or "").lower().endswith(".pdf") and s["id"] not in done]
+            and (s.get("brochure_url") or "").split("?")[0].lower().endswith(".pdf") and s["id"] not in done]
     pool = [s for s in pool if not has_rooms(s)] if "--all" not in sys.argv else pool
     pool.sort(key=lambda s: (has_rooms(s), -((s.get("sale_count") or 0) + (s.get("rent_count") or 0))))  # unread societies first
+    if limit:
+        pool = pool[:limit]
     jobs = [(s["id"], s["brochure_url"]) for s in pool]
     print("brochures to read", len(jobs), flush=True)
     with ProcessPoolExecutor(max_workers=6) as ex:
@@ -90,11 +133,12 @@ def main(city="gurgaon"):
             done[sid] = r
             if i % 20 == 0 or i == len(jobs):
                 print(f"{i}/{len(jobs)}", flush=True)
-                out_file.write_text(json.dumps({"engine": "pdftoppm + macOS Vision OCR", "brochures": done}, indent=0))
+                out_file.write_text(json.dumps({"engine": "Quartz/pdftoppm + macOS Vision OCR", "brochures": done}, indent=0))
     from collections import Counter
     print(Counter(r["status"] for r in done.values()))
     print("unit pages", sum(len(r.get("pages", [])) for r in done.values()))
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "gurgaon")
+    args = [a for a in sys.argv[1:] if not a.startswith("-")]
+    main(args[0] if args else "gurgaon", int(args[1]) if len(args) > 1 else None)

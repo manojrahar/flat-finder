@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
   <title>Flat Finder</title>
-  <meta name="description" content="Every housing society in Gurugram on one map. Filter by the smallest bedroom you can live with, buy or rent budget, amenities and what is nearby.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b0b0c'/%3E%3Cpath d='M7 26V7h10v19M17 13h8v13M10 11h4M10 15h4M10 19h4' fill='none' stroke='%23ffd9a0' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <meta name="description" content="Every housing society in a city on one map. Filter by the smallest bedroom you can live with, buy or rent budget, amenities and what is nearby.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -33,7 +34,7 @@
     </div>
     <div class="row-between">
       <div class="seg" id="f-mode"><button data-m="buy">Buy</button><button data-m="rent">Rent</button></div>
-      <button class="preset" id="preset-divy">Load Divy's search</button>
+      <button class="preset" id="preset-divy">Example search</button>
     </div>
     <div class="pill" id="q-pill" hidden></div>
 
@@ -147,7 +148,7 @@
     <div class="sheet">
       <h3>Add societies to my list</h3>
       <p class="fine">Paste names, one per line or separated by commas. We match each to the closest society.</p>
-      <textarea id="paste-text" rows="7" placeholder="Heritage One&#10;Pioneer Araya&#10;DLF Camellias"></textarea>
+      <textarea id="paste-text" rows="7" placeholder="Enter society names"></textarea>
       <div class="fine" id="paste-result"></div>
       <div class="row-between"><button class="linkbtn" id="paste-clear">Clear my list</button><span class="row-gap"><button class="ghost" id="paste-cancel">Close</button><button class="primary" id="paste-add">Add to my list</button></span></div>
     </div>

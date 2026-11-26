@@ -22,3 +22,11 @@ it('reads monthly rent', () => {
   expect(parsePrice('80k')).toBe(80000);
   expect(parseArgs(['--max-rent', '80k']).crit).toMatchObject({ mode: 'rent', maxRent: 80000 });
 });
+
+it('Jaipur search matches real societies with pool and gym', () => {
+  const city = JSON.parse(readFileSync(new URL('../web/public/data/jaipur.json', import.meta.url)));
+  const o = parseArgs(['--city', 'jaipur', '--bhk', '3,4', '--min-sqft', '1400', '--amenity', 'pool,gym', '--likely']);
+  const names = search(city, o).map((r) => r.s.name);
+  expect(names).toContain('Mahimas Palm Springs Phase III');
+  expect(names).toContain('FS Realty The Crest');
+});

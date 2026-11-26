@@ -4,6 +4,7 @@ usage: python osm_fetch.py <city>  -> out/<city>/osm_areas.geojson, out/<city>/o
 """
 import json
 import pathlib
+import subprocess
 import sys
 import time
 import urllib.parse
@@ -38,6 +39,18 @@ def overpass(query, name):
             f.write_bytes(raw)
             return data
         except Exception as e:
+            # curl uses the macOS trust store (mirrors like maps.mail.ru fail Python's OpenSSL chain)
+            try:
+                r = subprocess.run(
+                    ["curl", "-sfL", "-A", "flat-finder/0.1", "--max-time", "300", "--data-urlencode", f"data={query}", url],
+                    capture_output=True,
+                )
+                if r.returncode == 0 and r.stdout:
+                    data = json.loads(r.stdout)
+                    f.write_bytes(r.stdout)
+                    return data
+            except Exception:
+                pass
             print("mirror failed", url, e, flush=True)
             time.sleep(10)
     raise SystemExit("all Overpass mirrors failed")
@@ -128,14 +141,16 @@ POI_QUERY = """[out:json][timeout:280];(
 def poi_kind(t):
     if t.get("leisure") == "park":
         return "park"
-    if t.get("station") == "subway" or "metro" in (t.get("name") or "").lower() or t.get("subway") == "yes":
-        return "metro"
-    if t.get("railway") in ("station", "halt"):
-        return "rail"
     if t.get("amenity") in ("school", "hospital"):
         return t["amenity"]
     if t.get("shop") in ("mall", "supermarket"):
         return "shopping"
+    if t.get("station") == "subway" or t.get("subway") == "yes" or (
+        t.get("railway") in ("station", "halt", "subway_entrance") and "metro" in (t.get("name") or "").lower()
+    ):
+        return "metro"
+    if t.get("railway") in ("station", "halt"):
+        return "rail"
     return None
 
 

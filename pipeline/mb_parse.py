@@ -63,7 +63,25 @@ def photo_links(paths, n=8):
     return out[:n]
 
 
+def _acres(c):
+    a = _num(c.get("projArea"))
+    if not a:
+        return None
+    u = c.get("projAreaUnitDesc")
+    if u == "Acre":
+        return a
+    if u == "Sq-m":
+        return round(a / 4046.856, 2)
+    if u == "Sq-ft":
+        return round(a / 43560.0, 2)
+    if u == "Sq-yrd":
+        return round(a / 4840.0, 2)
+    return None
+
+
 def card_to_project(c):
+    ty = c.get("ty") or c.get("propTy") or ""
+    pdp = (c.get("pdpUrl") or "").lstrip("/")
     return {
         "mb_id": c.get("psmid"),
         "name": (c.get("psmName") or "").strip(),
@@ -74,15 +92,15 @@ def card_to_project(c):
         "possession": c.get("prjPossYear"),
         "units": c.get("totalUnits") or None,
         "towers": c.get("noTower") or None,
-        "acres": c.get("projArea") if c.get("projAreaUnitDesc") == "Acre" else None,
+        "acres": _acres(c),
         "price_min": _num(c.get("seoSMinPrice")),
         "price_max": _num(c.get("seoSMaxPrice")),
         "prop_types": c.get("psmcndproptypes"),
         "brochure_url": c.get("sblink"),
         "card_units": parse_unit_info(c.get("unitInfo") or ""),
         "images": photo_links(c.get("image")),
-        "type_codes": [t.strip() for t in str(c.get("ty") or "").split(",") if t.strip()],
-        "url": "https://www.magicbricks.com/" + c["pdpUrl"],
+        "type_codes": [t.strip() for t in str(ty).split(",") if t.strip()],
+        "url": "https://www.magicbricks.com/" + pdp,
     }
 
 

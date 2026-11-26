@@ -13,10 +13,12 @@ import json
 import pathlib
 import re
 import sys
+import urllib.request
 from concurrent.futures import ProcessPoolExecutor
 
 ROOT = pathlib.Path(__file__).parent
 CACHE = ROOT / "cache" / "plans"
+UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 
 BED = re.compile(r"\b(M\.?\s*|MASTER\s*|KIDS?\s*|GUEST\s*)?(BED\s*-?\s*ROOM|BEDROOM|BED\s*RM|B\.?\s*R\.?\b)|\bKIDS?\s*ROOM|\bGUEST\s*ROOM", re.I)
 NOT_BED = re.compile(r"TOILET|BATH|WASH|DRESS|BALCONY|LOBBY|W\.?C\b|SERVANT|STAFF|UTILITY|STORE|STUDY", re.I)
@@ -97,14 +99,23 @@ def bedrooms_from_boxes(boxes):
 
 def read_image(args):
     url, bhk_hint = args
+    CACHE.mkdir(parents=True, exist_ok=True)
     f = CACHE / (hashlib.sha1(url.encode()).hexdigest() + ".jpg")
     if not f.exists():
-        return url, {"status": "no image"}
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            raw = urllib.request.urlopen(req, timeout=25).read()
+            if len(raw) > 1500 and not raw.lstrip().startswith(b"<"):
+                f.write_bytes(raw)
+        except Exception as e:
+            return url, {"status": "download error", "error": str(e)[:120], "bhk_listed": int(bhk_hint)}
+    if not f.exists():
+        return url, {"status": "no image", "bhk_listed": int(bhk_hint)}
     try:
         from ocr import ocr
         boxes = ocr(f)
     except Exception as e:
-        return url, {"status": "ocr error", "error": str(e)[:120]}
+        return url, {"status": "ocr error", "error": str(e)[:120], "bhk_listed": int(bhk_hint)}
     beds = bedrooms_from_boxes(boxes)
     return url, {"bedrooms": beds, "n_sizes": sum(1 for b in boxes if parse_size(b[0])), "bhk_listed": int(bhk_hint)}
 
@@ -129,27 +140,36 @@ def judge(r, jev):
     return r
 
 
-def main(city="gurgaon"):
+def main(city="gurgaon", limit=None):
     data = json.loads((ROOT.parent / "web" / "public" / "data" / f"{city}.json").read_text())
-    jev = json.loads((ROOT.parent / "data" / "verified" / f"{city}-ai.json").read_text())["plans"]
+    ai_file = ROOT.parent / "data" / "verified" / f"{city}-ai.json"
+    jev = json.loads(ai_file.read_text())["plans"] if ai_file.exists() else {}
+    out_file = ROOT.parent / "data" / "verified" / f"{city}-ocr.json"
+    existing = json.loads(out_file.read_text())["plans"] if out_file.exists() else {}
+    pool = [s for s in data["societies"] if s.get("plan_links")]
+    pool.sort(key=lambda s: -((s.get("sale_count") or 0) + (s.get("rent_count") or 0)))
+    if limit:
+        pool = pool[:limit]
     jobs, sid_of = [], {}
-    for s in data["societies"]:
+    for s in pool:
         for b, urls in (s.get("plan_links") or {}).items():
             for u in urls[:3]:
-                jobs.append((u, b))
                 sid_of[u] = s["id"]
-    out = {}
+                if u not in existing:
+                    jobs.append((u, b))
+    out = dict(existing)
     with ProcessPoolExecutor(max_workers=6) as ex:
         for i, (u, r) in enumerate(ex.map(read_image, jobs, chunksize=8), 1):
             r["sid"] = sid_of[u]
             out[u] = judge(r, jev.get(u)) if "bedrooms" in r else r
-            if i % 200 == 0:
+            if i % 200 == 0 or i == len(jobs):
                 print(f"{i}/{len(jobs)}", flush=True)
-    (ROOT.parent / "data" / "verified" / f"{city}-ocr.json").write_text(json.dumps({"engine": "macOS Vision OCR + Jev check", "plans": out}, indent=0))
+                out_file.write_text(json.dumps({"engine": "macOS Vision OCR" + (" + Jev check" if jev else ""), "plans": out}, indent=0))
+    out_file.write_text(json.dumps({"engine": "macOS Vision OCR" + (" + Jev check" if jev else ""), "plans": out}, indent=0))
     from collections import Counter
     print(Counter(r["status"] for r in out.values()).most_common())
     print("societies with a read plan", len({r["sid"] for r in out.values() if r["status"] == "read"}))
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "gurgaon")
+    main(sys.argv[1] if len(sys.argv) > 1 else "gurgaon", int(sys.argv[2]) if len(sys.argv) > 2 else None)

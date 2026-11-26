@@ -10,7 +10,7 @@ const HELP = `flatfinder: find housing societies that fit
 
   npx github:kairothq/flat-finder [options]
 
-  --city <id>            gurgaon (default), more as they are added
+  --city <id>            jaipur (default), gurgaon, more as they are added
   --bhk 3,4              BHK types
   --min-bedroom 11'3x12'3   every bedroom must clear both sides (also 11.25x12.25)
   --min-sqft 1620        minimum unit size (super area where known)
@@ -40,7 +40,7 @@ export function parsePrice(s) {
 }
 
 export function parseArgs(argv) {
-  const o = { city: 'gurgaon', crit: structuredClone(DEFAULT_CRITERIA), limit: 30, json: false, likely: false, data: null };
+  const o = { city: 'jaipur', crit: structuredClone(DEFAULT_CRITERIA), limit: 30, json: false, likely: false, data: null };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i], v = () => argv[++i];
     if (a === '--city') o.city = v();
@@ -93,7 +93,7 @@ async function main() {
   }));
   console.table(table);
   console.log('~ = our estimate from the rent-to-price ratio, not a listing.');
-  console.log('* verified from brochures or HRERA plans. Unit rows without room sizes are "not checked yet" and never shown as matches.');
+  console.log('* verified from brochures or RERA plans. Unit rows without room sizes are "not checked yet" and never shown as matches.');
 }
 
 const self = fileURLToPath(import.meta.url);

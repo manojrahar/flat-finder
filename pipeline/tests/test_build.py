@@ -30,6 +30,8 @@ def test_kind_of():
     assert build_city.kind_of({"config_text": "2, 3, 4 BHK Multistorey Apartments"}) == "apartment"
     assert build_city.kind_of({"config_text": "Residential Plot"}) == "plot"
     assert build_city.kind_of({"config_text": "4 BHK Villa"}) == "villa"
+    assert build_city.kind_of({"config_text": "Commercial Office Spaces"}) == "commercial"
+    assert build_city.kind_of({"config_text": "Commercial Shops"}) == "commercial"
 
 
 def test_neighbourhood_sized_area_is_not_a_society_site():
@@ -65,3 +67,13 @@ def test_match_verified_needs_whole_name_and_sector():
     assert build_city.match_verified({"match": ["M3M Heights"], "sector": "65"}, ps)["mb_id"] == 2
     assert build_city.match_verified({"match": ["M3M St Andrews"], "sector": "65"}, ps)["mb_id"] == 4
     assert build_city.match_verified({"match": ["M3M Heights"], "sector": "65"}, ps, taken={2}) is None
+
+
+def test_in_bbox_city_agnostic():
+    jaipur_bbox = [26.68, 75.55, 27.10, 76.00]
+    assert build_city.in_bbox({"lat": 26.9064, "lng": 75.7360}, jaipur_bbox) is True
+    assert build_city.in_bbox({"lat": 28.4169, "lng": 76.9096}, jaipur_bbox) is False
+    assert build_city.in_bbox({"lat": None, "lng": 75.7360}, jaipur_bbox) is False
+    assert build_city.normalize_coords({"lat": 75.689, "lng": 26.910}, jaipur_bbox)["lat"] == 26.910
+    assert build_city.normalize_coords({"lat": 28.4169, "lng": 76.9096}, jaipur_bbox) is None
+    assert "jaipur" not in build_city.tokens("The Crest Jaipur")

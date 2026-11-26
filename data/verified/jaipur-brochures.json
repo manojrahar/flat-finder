@@ -1,0 +1,6215 @@
+{
+"engine": "Quartz/pdftoppm + macOS Vision OCR",
+"brochures": {
+"s5425283": {
+"url": "https://img.staticmb.com/mbimages/project/1745987011514Empress-Big-Brochure-(All-Page)-Final-updated-(2)_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5448417": {
+"url": "https://img.staticmb.com/mbimages/project/1776399987854Prime-Enclave_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5418479": {
+"url": "https://img.staticmb.com/mbimages/project/1704952499660royal-eternia01_compressed.pdf",
+"status": "read",
+"pages": [
+{
+"page": 5,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+12.25,
+12.75
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+15.25
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.083
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+15.333
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BEDROOMI",
+"ft": [
+10.5,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+12.25,
+12.333
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.5,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+15.583
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+8.0,
+13.0
+]
+}
+]
+}
+]
+},
+"s5082946": {
+"url": "https://img.staticmb.com/mbimages/project/1672388528289JOI-Phase-2-Brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 17,
+"bhk": null,
+"bedrooms": [
+{
+"label": "04 Bedroom-1",
+"ft": [
+12.434,
+19.062
+]
+},
+{
+"label": "06 Bedroom-3",
+"ft": [
+10.433,
+14.469
+]
+},
+{
+"label": "05 Bedroom-2",
+"ft": [
+11.333,
+14.5
+]
+},
+{
+"label": "07 Bedroom-4",
+"ft": [
+12.667,
+14.667
+]
+}
+]
+},
+{
+"page": 18,
+"bhk": 5,
+"bedrooms": [
+{
+"label": "04 Bedroom-1",
+"ft": [
+12.434,
+15.125
+]
+},
+{
+"label": "05 Bedroom-2",
+"ft": [
+11.056,
+14.469
+]
+},
+{
+"label": "06 Bedroom-3",
+"ft": [
+10.433,
+14.469
+]
+},
+{
+"label": "08 Bedroom-5",
+"ft": [
+11.333,
+14.0
+]
+}
+]
+}
+]
+},
+"s5040961": {
+"url": "https://img.staticmb.com/mbimages/project/1618466120804Vrinda-Garden---Brochure-1611234645.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5235169": {
+"url": "https://img.staticmb.com/mbimages/project/1617093604016Vardhman's-Kings-Court.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5176589": {
+"url": "https://img.staticmb.com/mbimages/project/1631706153031brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5327143": {
+"url": "https://img.staticmb.com/mbimages/project/1747715804919Suncity-Jewel-Of-India-Phase-2-Brochure-(1).pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5325717": {
+"url": "https://img.staticmb.com/mbimages/project/1644321333872Times-Residency-Mini-Brochure-11-11-2021.pdf",
+"status": "read",
+"pages": [
+{
+"page": 21,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM 1",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BEDROOM 2",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BEDROOM 3",
+"ft": [
+11.0,
+12.75
+]
+}
+]
+},
+{
+"page": 23,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM 2",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+18.75
+]
+},
+{
+"label": "BEDROOM 01",
+"ft": [
+11.417,
+13.0
+]
+}
+]
+},
+{
+"page": 24,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM 01",
+"ft": [
+11.417,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+13.75
+]
+},
+{
+"label": "BEDROOM 1",
+"ft": [
+11.0,
+12.5
+]
+},
+{
+"label": "BEDROOM 2",
+"ft": [
+11.0,
+12.5
+]
+}
+]
+},
+{
+"page": 25,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM 2",
+"ft": [
+11.0,
+12.5
+]
+},
+{
+"label": "BEDROOM 1",
+"ft": [
+11.0,
+12.5
+]
+},
+{
+"label": "BEDROOM 2",
+"ft": [
+11.0,
+12.5
+]
+},
+{
+"label": "BEDROOM 1",
+"ft": [
+11.0,
+12.5
+]
+}
+]
+},
+{
+"page": 27,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM 2",
+"ft": [
+11.583,
+13.0
+]
+},
+{
+"label": "BEDROOM 2",
+"ft": [
+11.583,
+13.0
+]
+},
+{
+"label": "BEDROOM 1",
+"ft": [
+11.583,
+13.0
+]
+}
+]
+},
+{
+"page": 29,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM 2",
+"ft": [
+11.0,
+12.167
+]
+},
+{
+"label": "BEDROOM 1",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BEDROOM 1",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+}
+]
+},
+"s5437177": {
+"url": "https://img.staticmb.com/mbimages/project/1788171809349KDMS-BROCHURE-final-(1)_11zon.pdf",
+"status": "read",
+"pages": [
+{
+"page": 26,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.375
+]
+}
+]
+},
+{
+"page": 27,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+14.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+16.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.125
+]
+}
+]
+},
+{
+"page": 28,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.75
+]
+}
+]
+},
+{
+"page": 29,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.375,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.375,
+14.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+17.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+}
+]
+},
+{
+"page": 30,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.375,
+15.25
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.167,
+16.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.25,
+17.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.75
+]
+}
+]
+},
+{
+"page": 31,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.375,
+14.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+}
+]
+},
+{
+"page": 32,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+16.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+}
+]
+},
+"s5217327": {
+"url": "https://img.staticmb.com/mbimages/project/17019487997165217327.pdf",
+"status": "read",
+"pages": [
+{
+"page": 4,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+}
+]
+},
+{
+"page": 5,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.5
+]
+}
+]
+},
+{
+"page": 7,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.25
+]
+}
+]
+}
+]
+},
+"s5441715": {
+"url": "https://img.staticmb.com/mbimages/project/1767158931564Chordia-Eraya-Brochure_17-Dec-2025_compressed_11zon.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5025023": {
+"url": "https://img.staticmb.com/mbimages/project/1539084199720prodfdbksystem_60614079-75b0-49b8-a7ab-93f8601585f8.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5351785": {
+"url": "https://img.staticmb.com/mbimages/project/1779967815235Urban-Suite-brochure_11zon.pdf",
+"status": "read",
+"pages": [
+{
+"page": 4,
+"bhk": 1,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+13.5
+]
+}
+]
+}
+]
+},
+"s5446595": {
+"url": "https://img.staticmb.com/mbimages/project/1773902918852deep-height_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5425275": {
+"url": "https://img.staticmb.com/mbimages/project/1791450612183Platinum-Greens-Opulence_Brochurenew.pdf",
+"status": "read",
+"pages": [
+{
+"page": 15,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+16.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.167,
+15.0
+]
+},
+{
+"label": "GUEST BED ROOM",
+"ft": [
+11.0,
+16.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+13.667,
+15.583
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.75,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+16.0
+]
+},
+{
+"label": "GUEST BED ROOM",
+"ft": [
+13.667,
+15.583
+]
+}
+]
+}
+]
+},
+"s5108795": {
+"url": "https://img.staticmb.com/mbimages/project/1509169763639b.pdf",
+"status": "read",
+"pages": [
+{
+"page": 11,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+22.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+13.0
+]
+}
+]
+},
+{
+"page": 13,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+12.0,
+16.0
+]
+}
+]
+}
+]
+},
+"s5435991": {
+"url": "https://img.staticmb.com/mbimages/project/1756278888188Urban-Prime-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5453743": {
+"url": "https://img.staticmb.com/mbimages/project/1793689516780Raja-Mato-Shree-Raghuvansham-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5186159": {
+"url": "https://img.staticmb.com/mbimages/project/1603356248258Riviera-Brochure02_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5029776": {
+"url": "https://img.staticmb.com/mbimages/project/1394185903163Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5436615": {
+"url": "https://img.staticmb.com/mbimages/project/1757505630727Atelier_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5433107": {
+"url": "https://img.staticmb.com/mbimages/project/1750235476363Livgyan-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5074204": {
+"url": "https://img.staticmb.com/mbimages/project/1624281946824Umang.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5325727": {
+"url": "https://img.staticmb.com/mbimages/project/1644391634609Samanvay-Atlantica-Brochure-.pdf",
+"status": "read",
+"pages": [
+{
+"page": 7,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "Bedroom 02",
+"ft": [
+10.25,
+14.667
+]
+},
+{
+"label": "Bedroom 03",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "Bedroom 04",
+"ft": [
+13.0,
+13.5
+]
+}
+]
+}
+]
+},
+"s5017002": {
+"url": "https://img.staticmb.com/mbimages/project/1671519929162Urbana-brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5082672": {
+"url": "https://img.staticmb.com/mbimages/project/1594037189882brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 6,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+13.5
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.333,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+},
+{
+"page": 7,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+13.333
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+12.5,
+13.75
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+},
+{
+"page": 8,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+12.583,
+14.5
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+12.0,
+12.333
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.5,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.583,
+14.0
+]
+}
+]
+}
+]
+},
+"s5082362": {
+"url": "https://img.staticmb.com/mbimages/project/1752044076111Manglam-Rangoli-Greens-Brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 10,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM-3",
+"ft": [
+11.833,
+13.5
+]
+}
+]
+},
+{
+"page": 11,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.083,
+13.667
+]
+},
+{
+"label": "GUEST BEDROOM",
+"ft": [
+10.75,
+13.0
+]
+},
+{
+"label": "BED ROOM-T",
+"ft": [
+11.25,
+13.667
+]
+}
+]
+},
+{
+"page": 12,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "GUSET BED ROOM",
+"ft": [
+11.0,
+14.25
+]
+},
+{
+"label": "GUEST BEDROOM",
+"ft": [
+10.75,
+13.0
+]
+}
+]
+}
+]
+},
+"s5216149": {
+"url": "https://img.staticmb.com/mbimages/project/1771319534932Om-Pallacia-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5071334": {
+"url": "https://img.staticmb.com/mbimages/project/1439027091900Bellevista-Mini-Brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 5,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+12.0,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.5,
+11.0
+]
+},
+{
+"label": "BEDROOM.",
+"ft": [
+10.5,
+11.0
+]
+}
+]
+}
+]
+},
+"s5386973": {
+"url": "https://img.staticmb.com/mbimages/project/1692186003817Vedanta-Ebrochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 8,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM -2",
+"ft": [
+11.333,
+11.917
+]
+},
+{
+"label": "BEDROOM -1",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+},
+{
+"page": 10,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BEDROOM -03",
+"ft": [
+11.333,
+11.917
+]
+},
+{
+"label": "BEDROOM -04",
+"ft": [
+11.917,
+14.583
+]
+}
+]
+}
+]
+},
+"s5126175": {
+"url": "https://img.staticmb.com/mbimages/project/17012501833905126175.pdf",
+"status": "not a pdf"
+},
+"s5442335": {
+"url": "https://img.staticmb.com/mbimages/project/1767873778751Royal-Retreat-E-Brochure-HD_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5097027": {
+"url": "https://img.staticmb.com/mbimages/project/1645590696600Aventura-E-Brochure-New-(2).pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5418167": {
+"url": "https://img.staticmb.com/mbimages/project/170317529178911x14-brochure-2.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5090834": {
+"url": "https://img.staticmb.com/mbimages/project/1457582228502vaishali-estate.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5099363": {
+"url": "https://img.staticmb.com/mbimages/project/15936024619935099363_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5091764": {
+"url": "https://img.staticmb.com/mbimages/project/1644218407806Sapphire.pdf",
+"status": "read",
+"pages": [
+{
+"page": 11,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM - 3",
+"ft": [
+11.0,
+14.0
+]
+}
+]
+},
+{
+"page": 12,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM - 2",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+}
+]
+},
+"s5018039": {
+"url": "https://img.staticmb.com/mbimages/project/1455963578983b.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5078972": {
+"url": "https://img.staticmb.com/mbimages/project/1451909988399Aacia-new-brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 4,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+11.0,
+11.917
+]
+},
+{
+"label": "BEDROOM-02",
+"ft": [
+10.5,
+11.917
+]
+},
+{
+"label": "BEDROOM-02",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+10.0,
+15.583
+]
+},
+{
+"label": "BEDROOM-02",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+10.0,
+15.583
+]
+},
+{
+"label": "BEDROOM-02",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+10.0,
+15.417
+]
+},
+{
+"label": "BEDROOM-03",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BEDROOM-01",
+"ft": [
+10.5,
+12.5
+]
+},
+{
+"label": "BEDROOM-01",
+"ft": [
+11.5,
+11.75
+]
+},
+{
+"label": "BEDROOM-02",
+"ft": [
+10.5,
+12.833
+]
+},
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+10.0,
+15.417
+]
+},
+{
+"label": "BEDROOM-02",
+"ft": [
+10.75,
+10.833
+]
+},
+{
+"label": "BEDROOM-01",
+"ft": [
+10.0,
+15.583
+]
+},
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+10.0,
+15.417
+]
+},
+{
+"label": "BEDROOM-02",
+"ft": [
+10.75,
+10.833
+]
+},
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+10.0,
+15.417
+]
+},
+{
+"label": "R BEDROOM-01",
+"ft": [
+10.0,
+15.583
+]
+},
+{
+"label": "BEDROOM-03",
+"ft": [
+11.583,
+13.667
+]
+},
+{
+"label": "BEDROOM-03",
+"ft": [
+11.667,
+13.667
+]
+},
+{
+"label": "BEDROOM-03",
+"ft": [
+10.5,
+13.667
+]
+},
+{
+"label": "BEDROOM-02",
+"ft": [
+10.75,
+10.833
+]
+},
+{
+"label": "BEDROOM-02",
+"ft": [
+10.75,
+10.833
+]
+}
+]
+},
+{
+"page": 5,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM-02",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+10.0,
+15.583
+]
+},
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+10.0,
+15.417
+]
+},
+{
+"label": "BEDROOM-03",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BEDROOM-01",
+"ft": [
+11.5,
+11.75
+]
+},
+{
+"label": "BEDROOM-02",
+"ft": [
+10.5,
+12.833
+]
+},
+{
+"label": "MASTER BEDROOM-03",
+"ft": [
+11.0,
+12.417
+]
+},
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+10.0,
+15.417
+]
+},
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+10.0,
+15.417
+]
+},
+{
+"label": "BEDROOM-03",
+"ft": [
+11.583,
+13.667
+]
+},
+{
+"label": "BEDROOM-03",
+"ft": [
+11.667,
+13.667
+]
+},
+{
+"label": "MASTER BEDROOM-01",
+"ft": [
+10.0,
+15.417
+]
+},
+{
+"label": "BEDROOM-02",
+"ft": [
+10.75,
+10.833
+]
+}
+]
+}
+]
+},
+"s5453713": {
+"url": "https://img.staticmb.com/mbimages/project/1783579755764kiara-nest-new-brochure_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5460991": {
+"url": "https://img.staticmb.com/mbimages/project/1793268262066Virasat_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5111219": {
+"url": "https://img.staticmb.com/mbimages/project/1581396955973bn.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5017124": {
+"url": "https://img.staticmb.com/mbimages/project/17017681690445017124.pdf",
+"status": "not a pdf"
+},
+"s5145491": {
+"url": "https://img.staticmb.com/mbimages/project/1656475148144Small-Brochure-CKD-Heights-final.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5094145": {
+"url": "https://img.staticmb.com/mbimages/project/1472206612667CDT-MS.pdf",
+"status": "read",
+"pages": [
+{
+"page": 7,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+11.0
+]
+}
+]
+}
+]
+},
+"s5419231": {
+"url": "https://img.staticmb.com/mbimages/project/1750927783773595768271O-1747209451627.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5142081": {
+"url": "https://img.staticmb.com/mbimages/project/1750671774273bro.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5456121": {
+"url": "https://img.staticmb.com/mbimages/project/1787133426567Prem-Kalyan-Group.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5457311": {
+"url": "https://img.staticmb.com/mbimages/project/17893636037881788945914241brochure-(3).pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5417559": {
+"url": "https://img.staticmb.com/mbimages/project/1698647495789Century-Garden-7-10-2023.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5453551": {
+"url": "https://img.staticmb.com/mbimages/project/1783592841628V-Park-Brochure_11zon.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5336879": {
+"url": "https://img.staticmb.com/mbimages/project/1664346884327Oxygen-Acres-Brochure(Print-File).pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5026866": {
+"url": "https://img.staticmb.com/mbimages/project/1718178162836Pink-Pride.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5296301": {
+"url": "https://img.staticmb.com/mbimages/project/1643981139544Mahal-Angan-Brochure--new.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5074769": {
+"url": "https://img.staticmb.com/mbimages/project/1496127084826brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 8,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.25,
+13.75
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.333,
+13.833
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.083,
+14.25
+]
+}
+]
+},
+{
+"page": 9,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.5,
+12.833
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.5
+]
+}
+]
+},
+{
+"page": 12,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+13.833
+]
+}
+]
+}
+]
+},
+"s5418657": {
+"url": "https://img.staticmb.com/mbimages/project/1791265009036Vision-204-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5326201": {
+"url": "https://img.staticmb.com/mbimages/project/1702892674765DIVINITY-Brochure---NOV-2023.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5040325": {
+"url": "https://img.staticmb.com/mbimages/project/15942044330775040325_Brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 5,
+"bhk": 1,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+11.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.5,
+13.0
+]
+}
+]
+}
+]
+},
+"s5445575": {
+"url": "https://img.staticmb.com/mbimages/project/1772172647742Viaan-Radiance-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5130127": {
+"url": "https://img.staticmb.com/mbimages/project/1578894761794b.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5446627": {
+"url": "https://img.staticmb.com/mbimages/project/1773916185253Empire-Edge.pdf",
+"status": "read",
+"pages": [
+{
+"page": 7,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+11.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+12.0,
+16.0
+]
+}
+]
+},
+{
+"page": 8,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.0
+]
+}
+]
+}
+]
+},
+"s5124537": {
+"url": "https://img.staticmb.com/mbimages/project/1560861294155balaji-city.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5110215": {
+"url": "https://img.staticmb.com/mbimages/project/1751279147167Argus-Brochure-Final.pdf",
+"status": "read",
+"pages": [
+{
+"page": 19,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BEDROOM 1",
+"ft": [
+12.5,
+23.667
+]
+},
+{
+"label": "BEDROOM 4",
+"ft": [
+11.5,
+11.667
+]
+},
+{
+"label": "BEDROOM 3",
+"ft": [
+12.417,
+14.083
+]
+},
+{
+"label": "BEDROOM 2",
+"ft": [
+11.5,
+17.25
+]
+}
+]
+}
+]
+},
+"s5092181": {
+"url": "https://img.staticmb.com/mbimages/project/17054003805095092181.pdf",
+"status": "read",
+"pages": [
+{
+"page": 6,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "4 BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+},
+{
+"label": "5 BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+}
+]
+},
+{
+"page": 7,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "3 BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+},
+{
+"label": "9 BED ROOM",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "12 BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+},
+{
+"label": "4 BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+}
+]
+}
+]
+},
+"s5027296": {
+"url": "https://img.staticmb.com/mbimages/project/1583228760433bb.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5294261": {
+"url": "https://img.staticmb.com/mbimages/project/1672033556908Woodland_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5023711": {
+"url": "https://img.staticmb.com/mbimages/project/1722839138335JaiVilas-brochure-July-24-.pdf",
+"status": "read",
+"pages": [
+{
+"page": 2,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+13.0
+]
+},
+{
+"label": "MASTER BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "MASTER BED ROOM",
+"ft": [
+10.5,
+13.0
+]
+},
+{
+"label": "MASTER BED ROOM",
+"ft": [
+10.5,
+13.0
+]
+},
+{
+"label": "MASTER BED ROOM",
+"ft": [
+10.5,
+13.0
+]
+},
+{
+"label": "MASTER BED ROOM",
+"ft": [
+10.5,
+13.0
+]
+},
+{
+"label": "MASTER BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "MASTER BED ROOM",
+"ft": [
+10.583,
+13.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+15.0,
+15.25
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+13.0
+]
+},
+{
+"label": "MASTER BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.333
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+24.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+13.0
+]
+},
+{
+"label": "MASTER BED ROOM",
+"ft": [
+10.5,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+}
+]
+},
+"s5404193": {
+"url": "https://img.staticmb.com/mbimages/project/1751630454839Nature-Homes-Amaltas-Brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 30,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.375
+]
+}
+]
+},
+{
+"page": 32,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+13.25
+]
+}
+]
+},
+{
+"page": 34,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.0
+]
+}
+]
+}
+]
+},
+"s5023676": {
+"url": "https://img.staticmb.com/mbimages/project/1400147125084arg-murli-heights.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5144007": {
+"url": "https://img.staticmb.com/mbimages/project/163351473540352582106O-1575945573443.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5294267": {
+"url": "https://img.staticmb.com/mbimages/project/1646028315418Liv-Space.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5030885": {
+"url": "https://img.staticmb.com/mbimages/project/1394187325805Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5294713": {
+"url": "https://img.staticmb.com/mbimages/project/17037403196205294713.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5184027": {
+"url": "https://img.staticmb.com/mbimages/project/17035729226335184027.pdf",
+"status": "read",
+"pages": [
+{
+"page": 12,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.75,
+11.0
+]
+}
+]
+},
+{
+"page": 13,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+13.5,
+16.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+}
+]
+},
+{
+"page": 14,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+13.5,
+16.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+}
+]
+},
+{
+"page": 15,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+}
+]
+},
+{
+"page": 16,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.0
+]
+}
+]
+},
+{
+"page": 17,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+12.0,
+16.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.5
+]
+}
+]
+}
+]
+},
+"s5028774": {
+"url": "https://img.staticmb.com/mbimages/project/1402142265144plans.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5118295": {
+"url": "https://img.staticmb.com/mbimages/project/1539062879665Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5090639": {
+"url": "https://img.staticmb.com/mbimages/project/1459403896292mahima-nirvana.pdf",
+"status": "read",
+"pages": [
+{
+"page": 5,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+11.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+12.0,
+15.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+12.0,
+14.583
+]
+}
+]
+},
+{
+"page": 6,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+},
+{
+"label": "BEDROOM 2",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+14.0
+]
+}
+]
+}
+]
+},
+"s5455635": {
+"url": "https://img.staticmb.com/mbimages/project/1786272657306AG-Park-View-Brochure-(1).pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5094943": {
+"url": "https://img.staticmb.com/mbimages/project/1649240925533Ebrochure-(2-&-3-bhk).pdf",
+"status": "read",
+"pages": [
+{
+"page": 7,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+}
+]
+},
+{
+"page": 8,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+11.0
+]
+}
+]
+},
+{
+"page": 10,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "Bedroom-2",
+"ft": [
+10.0,
+11.0
+]
+},
+{
+"label": "Bedroom-1",
+"ft": [
+10.0,
+10.0
+]
+}
+]
+}
+]
+},
+"s5128343": {
+"url": "https://img.staticmb.com/mbimages/project/1701954019723Unnati-Nilay---Eng-Project-brochure-.pdf",
+"status": "read",
+"pages": [
+{
+"page": 3,
+"bhk": 1,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+9.5,
+10.833
+]
+}
+]
+}
+]
+},
+"s5462431": {
+"url": "https://img.staticmb.com/mbimages/project/1794826890021Shri-Vitthalesh-Nivasa.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5325233": {
+"url": "https://img.staticmb.com/mbimages/project/1693806748172Aayam-E-Brochure.pdf",
+"status": "not a pdf"
+},
+"s5026337": {
+"url": "https://img.staticmb.com/mbimages/project/1404470813335br.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5122795": {
+"url": "https://img.staticmb.com/mbimages/project/1552389244906brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5111061": {
+"url": "https://img.staticmb.com/mbimages/project/1638172543841Aamor_A-3-Brochure_-02-07-2021.pdf",
+"status": "read",
+"pages": [
+{
+"page": 3,
+"bhk": 1,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+9.0,
+10.0
+]
+}
+]
+}
+]
+},
+"s5421971": {
+"url": "https://img.staticmb.com/mbimages/project/1719813351960Town-crest-_compressed.pdf",
+"status": "read",
+"pages": [
+{
+"page": 4,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM 2",
+"ft": [
+11.25,
+12.0
+]
+},
+{
+"label": "BED ROOM 1",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "BED ROOM 3",
+"ft": [
+11.0,
+11.5
+]
+}
+]
+},
+{
+"page": 5,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM 2",
+"ft": [
+12.5,
+12.75
+]
+}
+]
+},
+{
+"page": 6,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM 1",
+"ft": [
+11.0,
+11.25
+]
+}
+]
+}
+]
+},
+"s5435809": {
+"url": "https://img.staticmb.com/mbimages/project/1755836050964The-Cruise-Presentation.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5182151": {
+"url": "https://img.staticmb.com/mbimages/project/1629191628719Yaduraj-Enclave-E-Brochure-final.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5016859": {
+"url": "https://img.staticmb.com/mbimages/project/1392718519477vatika_jaipur_urban_woods_brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5104315": {
+"url": "https://img.staticmb.com/mbimages/project/1505885614073Felicity-Emerald-e-Plan-Book.pdf",
+"status": "read",
+"pages": [
+{
+"page": 8,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "Bed Room",
+"ft": [
+11.5,
+13.0
+]
+}
+]
+},
+{
+"page": 9,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "Bed Room",
+"ft": [
+11.0,
+14.0
+]
+}
+]
+},
+{
+"page": 11,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.5
+]
+}
+]
+},
+{
+"page": 12,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "Bed Room",
+"ft": [
+10.0,
+13.5
+]
+}
+]
+},
+{
+"page": 13,
+"bhk": 1,
+"bedrooms": [
+{
+"label": "Bed Room",
+"ft": [
+11.0,
+13.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "Bed Room",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+},
+{
+"page": 14,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "Bed Room",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "Bed Room",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "Bed Room",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+},
+{
+"page": 15,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.25,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.25,
+14.25
+]
+},
+{
+"label": "Bed Room",
+"ft": [
+10.25,
+14.0
+]
+}
+]
+}
+]
+},
+"s5115385": {
+"url": "https://img.staticmb.com/mbimages/project/1691148255002Shubh-Nikunj-B-tower-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5016925": {
+"url": "https://img.staticmb.com/mbimages/project/1538552181367brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5176717": {
+"url": "https://img.staticmb.com/mbimages/project/1632806429449VINAYAK-RESIDENCY-BROCHURE.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5073594": {
+"url": "https://img.staticmb.com/mbimages/project/1459410327421brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 7,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+}
+]
+},
+{
+"page": 11,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+}
+]
+},
+{
+"page": 12,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.0
+]
+}
+]
+}
+]
+},
+"s5035439": {
+"url": "https://img.staticmb.com/mbimages/project/1394779901405brochure.Pdf",
+"status": "read",
+"pages": [
+{
+"page": 12,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.75,
+13.0
+]
+}
+]
+}
+]
+},
+"s5098605": {
+"url": "https://img.staticmb.com/mbimages/project/1496118187468broucher-ggb-Final...in-13.pdf",
+"status": "read",
+"pages": [
+{
+"page": 15,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.333
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.25,
+12.333
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+11.0
+]
+}
+]
+},
+{
+"page": 16,
+"bhk": 1,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.5,
+10.833
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.5,
+10.833
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.5,
+12.333
+]
+}
+]
+},
+{
+"page": 17,
+"bhk": 1,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.0
+]
+}
+]
+}
+]
+},
+"s5095835": {
+"url": "https://img.staticmb.com/mbimages/project/1495192054502brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 5,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+9.833,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+11.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.25,
+12.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.25,
+12.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+14.25
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+14.25
+]
+}
+]
+},
+{
+"page": 6,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+14.25
+]
+}
+]
+},
+{
+"page": 7,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.25,
+12.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+9.833,
+12.0
+]
+}
+]
+}
+]
+},
+"s5436799": {
+"url": "https://img.staticmb.com/mbimages/project/1758094136338Rana-Residency-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5427513": {
+"url": "https://img.staticmb.com/mbimages/project/1782388916596Casa11_brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5418971": {
+"url": "https://img.staticmb.com/mbimages/project/1707909801107J-Park-Brochure-Final_compressed.pdf",
+"status": "read",
+"pages": [
+{
+"page": 12,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM-3",
+"ft": [
+10.0,
+11.0
+]
+}
+]
+}
+]
+},
+"s5326385": {
+"url": "https://img.staticmb.com/mbimages/project/17018442688265326385.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5069927": {
+"url": "https://img.staticmb.com/mbimages/project/1401535705508manglam_aroma.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5099767": {
+"url": "https://img.staticmb.com/mbimages/project/15936026981395099767_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5324743": {
+"url": "https://img.staticmb.com/mbimages/project/1639650391503Vinayak-apartment-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5417077": {
+"url": "https://img.staticmb.com/mbimages/project/1745985383928Celesta-Brochure-compressed_11zon.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5098559": {
+"url": "https://img.staticmb.com/mbimages/project/1558077802421brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5419367": {
+"url": "https://img.staticmb.com/mbimages/project/1709796097883THE-GRAND-ARCH.pdf",
+"status": "read",
+"pages": [
+{
+"page": 5,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.333,
+19.25
+]
+}
+]
+}
+]
+},
+"s5337079": {
+"url": "https://img.staticmb.com/mbimages/project/17018352956545337079.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5188726": {
+"url": "https://img.staticmb.com/mbimages/project/1703745014565Brochure-gokul-vatika.pdf",
+"status": "read",
+"pages": [
+{
+"page": 7,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+10.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+11.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+10.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+10.0
+]
+}
+]
+}
+]
+},
+"s5089634": {
+"url": "https://img.staticmb.com/mbimages/project/15942848474745089634_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5428195": {
+"url": "https://img.staticmb.com/mbimages/project/1740028153402Parth-Elegance-Rera.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5430419": {
+"url": "https://img.staticmb.com/mbimages/project/1744785978317Suraj-Heights_Brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 11,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+13.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.75
+]
+}
+]
+}
+]
+},
+"s5097991": {
+"url": "https://img.staticmb.com/mbimages/project/1680088948319Oasis-E-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5232237": {
+"url": "https://img.staticmb.com/mbimages/project/1632804093725E-Brochure-Solitaire-Suites.pdf",
+"status": "read",
+"pages": [
+{
+"page": 6,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+16.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.583,
+16.0
+]
+}
+]
+},
+{
+"page": 7,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+12.083,
+16.0
+]
+}
+]
+}
+]
+},
+"s5118293": {
+"url": "https://img.staticmb.com/mbimages/project/1539059612911b.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5092109": {
+"url": "https://img.staticmb.com/mbimages/project/1670993259355Kediaz-CC-brochure10-4-2016-1.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5214989": {
+"url": "https://img.staticmb.com/mbimages/project/16795574658995214989-Akshat-Meadows-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5019994": {
+"url": "https://img.staticmb.com/mbimages/project/1386244956158e-brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 4,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "Bed Room",
+"ft": [
+11.083,
+12.0
+]
+},
+{
+"label": "Bed Room",
+"ft": [
+10.5,
+12.0
+]
+}
+]
+}
+]
+},
+"s5336685": {
+"url": "https://img.staticmb.com/mbimages/project/1663587472728Chitrakoot-Heights.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5082954": {
+"url": "https://img.staticmb.com/mbimages/project/17052935347385082954.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5079065": {
+"url": "https://img.staticmb.com/mbimages/project/1470655709063ebrochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5073163": {
+"url": "https://img.staticmb.com/mbimages/project/17054678317545073163.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5073047": {
+"url": "https://img.staticmb.com/mbimages/project/17050355326615073047.pdf",
+"status": "read",
+"pages": [
+{
+"page": 3,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+13.0
+]
+}
+]
+}
+]
+},
+"s5297957": {
+"url": "https://img.staticmb.com/mbimages/project/17054750886575297957.pdf",
+"status": "read",
+"pages": [
+{
+"page": 11,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.5,
+13.75
+]
+}
+]
+},
+{
+"page": 12,
+"bhk": null,
+"bedrooms": [
+{
+"label": "MASTER BEDROOM",
+"ft": [
+11.0,
+13.75
+]
+}
+]
+},
+{
+"page": 15,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+12.583
+]
+}
+]
+}
+]
+},
+"s5324813": {
+"url": "https://img.staticmb.com/mbimages/project/1640240145753Luxurious-Landings-New.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5042206": {
+"url": "https://img.staticmb.com/mbimages/project/1399352830947royalcelebrity-e-brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5331213": {
+"url": "https://img.staticmb.com/mbimages/project/1650614273999Royal-Gracia.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5094243": {
+"url": "https://img.staticmb.com/mbimages/project/17030633729245094243.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5021450": {
+"url": "https://img.staticmb.com/mbimages/project/16801811977715021450.pdf",
+"status": "read",
+"pages": [
+{
+"page": 7,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+12.0,
+15.0
+]
+}
+]
+},
+{
+"page": 9,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+12.25,
+12.583
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+12.0,
+12.5
+]
+}
+]
+}
+]
+},
+"s5176647": {
+"url": "https://img.staticmb.com/mbimages/project/16059551018145176647_Brocuher.pdf",
+"status": "read",
+"pages": [
+{
+"page": 3,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+14.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+14.0
+]
+}
+]
+},
+{
+"page": 4,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+14.75
+]
+}
+]
+},
+{
+"page": 5,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+14.75
+]
+}
+]
+},
+{
+"page": 7,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+14.0
+]
+}
+]
+},
+{
+"page": 8,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+14.0
+]
+}
+]
+},
+{
+"page": 10,
+"bhk": 1,
+"bedrooms": [
+{
+"label": "CHILDRENS BED ROOM",
+"ft": [
+8.75,
+9.0
+]
+}
+]
+}
+]
+},
+"s5216245": {
+"url": "https://img.staticmb.com/mbimages/project/17049513209045216245.pdf",
+"status": "read",
+"pages": [
+{
+"page": 2,
+"bhk": 1,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+},
+{
+"page": 3,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+}
+]
+},
+"s5099413": {
+"url": "https://img.staticmb.com/mbimages/project/1678421220560_5099413-EBrochureJagatpura.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5122213": {
+"url": "https://img.staticmb.com/mbimages/project/1550552441435brochure.pdf",
+"status": "error",
+"error": "download failed (28)"
+},
+"s5098271": {
+"url": "https://img.staticmb.com/mbimages/project/1655117467631Atulya-E-brochure.pdf",
+"status": "error",
+"error": "download failed (28)"
+},
+"s5297435": {
+"url": "https://img.staticmb.com/mbimages/project/17054730105465297435.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5417079": {
+"url": "https://img.staticmb.com/mbimages/project/1695645947255CASA-Crown.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5417471": {
+"url": "https://img.staticmb.com/mbimages/project/1698045693755Vaishali-Homes-Broucher_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5086643": {
+"url": "https://img.staticmb.com/mbimages/project/1461389751654b.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5421553": {
+"url": "https://img.staticmb.com/mbimages/project/1774431838513The-Emerald-Brochure_11zon.pdf",
+"status": "read",
+"pages": [
+{
+"page": 10,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.833,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+11.333
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+12.0
+]
+}
+]
+},
+{
+"page": 11,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.5,
+15.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.917
+]
+}
+]
+},
+{
+"page": 12,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.833,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+12.083
+]
+}
+]
+}
+]
+},
+"s5324397": {
+"url": "https://img.staticmb.com/mbimages/project/1638180575640Bungalow-71--Updated.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5404099": {
+"url": "https://img.staticmb.com/mbimages/project/1750848110168JC-Heights-11-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5086161": {
+"url": "https://img.staticmb.com/mbimages/project/17020277899475086161.pdf",
+"status": "read",
+"pages": [
+{
+"page": 13,
+"bhk": 1,
+"bedrooms": [
+{
+"label": "M. BED ROOM",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "M. BED ROOM",
+"ft": [
+10.0,
+13.25
+]
+}
+]
+}
+]
+},
+"s5189054": {
+"url": "https://img.staticmb.com/mbimages/project/1600259465879nirman-residecy.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5093253": {
+"url": "https://img.staticmb.com/mbimages/project/16015317177065093253_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5025887": {
+"url": "https://img.staticmb.com/mbimages/project/1387019005532Brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 6,
+"bhk": null,
+"bedrooms": [
+{
+"label": "Bed Room",
+"ft": [
+10.0,
+13.5
+]
+},
+{
+"label": "Bed Room",
+"ft": [
+10.0,
+13.0
+]
+}
+]
+},
+{
+"page": 8,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "Bed Room",
+"ft": [
+10.75,
+12.0
+]
+}
+]
+}
+]
+},
+"s5098741": {
+"url": "https://img.staticmb.com/mbimages/project/1556689717384Param-final-brocuher-ilovepdf-compressed-1.pdf",
+"status": "read",
+"pages": [
+{
+"page": 5,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+10.0
+]
+}
+]
+}
+]
+},
+"s5026815": {
+"url": "https://img.staticmb.com/mbimages/project/1386753937837Ebroucher.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5215949": {
+"url": "https://img.staticmb.com/mbimages/project/17047775815365215949.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5094205": {
+"url": "https://img.staticmb.com/mbimages/project/17037471981195094205.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5095969": {
+"url": "https://img.staticmb.com/mbimages/project/1478064795133Prescon-Buildcon-Brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 3,
+"bhk": null,
+"bedrooms": [
+{
+"label": "Bedroom1 ....17'-4.5 x 12'-10.5i",
+"ft": [
+12.875,
+17.375
+]
+},
+{
+"label": "Bedroom1 ....16'-4.5 x 12-10.5i",
+"ft": [
+12.875,
+16.375
+]
+},
+{
+"label": "Bedroom2 ....11'-0 x 13'-6t",
+"ft": [
+11.0,
+13.5
+]
+},
+{
+"label": "Bedroom1 ....14'-3 x 13'-0i",
+"ft": [
+13.0,
+14.25
+]
+},
+{
+"label": "Bedroom2 ....11'-0 x 13'-6t",
+"ft": [
+11.0,
+13.5
+]
+},
+{
+"label": "Bedroom3 ....13'-0 x 11'-0i",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "Bedroom1 ....14'-3 x 13'-0\"",
+"ft": [
+13.0,
+14.25
+]
+}
+]
+}
+]
+},
+"s5124987": {
+"url": "https://img.staticmb.com/mbimages/project/1563437860633UDB_Tower_e-brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5413557": {
+"url": "https://img.staticmb.com/mbimages/project/1688097334610WELCOME-TO-(2)-(1).pdf",
+"status": "not a pdf"
+},
+"s5437217": {
+"url": "https://img.staticmb.com/mbimages/project/1773641536072Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5038915": {
+"url": "https://img.staticmb.com/mbimages/project/1395036910575bro.pdf",
+"status": "read",
+"pages": [
+{
+"page": 2,
+"bhk": null,
+"bedrooms": [
+{
+"label": "Bed Room",
+"ft": [
+9.375,
+10.0
+]
+},
+{
+"label": "Bed Room",
+"ft": [
+9.625,
+10.0
+]
+}
+]
+}
+]
+},
+"s5398157": {
+"url": "https://img.staticmb.com/mbimages/project/1680171482120Modern-Minimalist-Interior-Trifold-Brochure-(1).pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5021163": {
+"url": "https://img.staticmb.com/mbimages/project/13946985686091345806223Classic-Residency.pdf",
+"status": "read",
+"pages": [
+{
+"page": 4,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+13.5
+]
+}
+]
+}
+]
+},
+"s5099471": {
+"url": "https://img.staticmb.com/mbimages/project/1570776859142Final.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5017200": {
+"url": "https://img.staticmb.com/mbimages/project/1388056030792e-brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 9,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.0
+]
+}
+]
+},
+{
+"page": 10,
+"bhk": 1,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.0
+]
+}
+]
+}
+]
+},
+"s5031039": {
+"url": "https://img.staticmb.com/mbimages/project/17019235304305031039.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5028918": {
+"url": "https://img.staticmb.com/mbimages/project/17029817062495028918.pdf",
+"status": "read",
+"pages": [
+{
+"page": 9,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.75,
+13.75
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.75,
+12.75
+]
+}
+]
+},
+{
+"page": 10,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.75,
+13.75
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.75,
+13.75
+]
+}
+]
+},
+{
+"page": 11,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.5,
+12.25
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.75,
+13.75
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.75,
+13.75
+]
+}
+]
+}
+]
+},
+"s5101585": {
+"url": "https://img.staticmb.com/mbimages/project/1517825323667b.pdf",
+"status": "read",
+"pages": [
+{
+"page": 11,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.583
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.5,
+12.333
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.5,
+13.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.5,
+12.333
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.333,
+15.25
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+12.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.5,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+14.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+12.5,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.333,
+14.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+12.75,
+16.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.833,
+13.0
+]
+}
+]
+}
+]
+},
+"s5120035": {
+"url": "https://img.staticmb.com/mbimages/project/15941322768155120035_Brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 23,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.333,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.0
+]
+}
+]
+},
+{
+"page": 24,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.333,
+13.0
+]
+}
+]
+},
+{
+"page": 25,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.333,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+14.0
+]
+}
+]
+},
+{
+"page": 26,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.0
+]
+}
+]
+}
+]
+},
+"s5102315": {
+"url": "https://img.staticmb.com/mbimages/project/1682483864773brochure_skyway.pdf",
+"status": "not a pdf"
+},
+"s5118441": {
+"url": "https://img.staticmb.com/mbimages/project/15941318489265118441_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5094397": {
+"url": "https://img.staticmb.com/mbimages/project/1481092673432b.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5419725": {
+"url": "https://img.staticmb.com/mbimages/project/1711005571839classic-jai-shree-brouchure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5421603": {
+"url": "https://img.staticmb.com/mbimages/project/1745557011099Anant-Emerald_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5232915": {
+"url": "https://img.staticmb.com/mbimages/project/1614917923284Elite-16_Mahroon_Final.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5231795": {
+"url": "https://img.staticmb.com/mbimages/project/1614687750502SKR.pdf",
+"status": "read",
+"pages": [
+{
+"page": 3,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.75,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.5,
+11.333
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.5,
+13.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.75,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+11.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+9.333,
+15.5
+]
+}
+]
+}
+]
+},
+"s5394433": {
+"url": "https://img.staticmb.com/mbimages/project/1678348620610Galaxy-Royale.pdf",
+"status": "read",
+"pages": [
+{
+"page": 5,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.5,
+13.25
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+14.0
+]
+}
+]
+},
+{
+"page": 6,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+13.125
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.625
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+9.5,
+13.25
+]
+}
+]
+},
+{
+"page": 7,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.5,
+13.25
+]
+}
+]
+},
+{
+"page": 8,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+13.25
+]
+}
+]
+},
+{
+"page": 9,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.5
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.5,
+13.25
+]
+}
+]
+}
+]
+},
+"s5391571": {
+"url": "https://img.staticmb.com/mbimages/project/1674468873365GURU-KRIPA-AARADHANA.pdf",
+"status": "read",
+"pages": [
+{
+"page": 8,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.583,
+12.5
+]
+}
+]
+}
+]
+},
+"s5396209": {
+"url": "https://img.staticmb.com/mbimages/project/1679385530083prodfdbksystem_f572bec9-ae3d-49ae-b5f1-2fb7f3f63def.pdf",
+"status": "not a pdf"
+},
+"s5397695": {
+"url": "https://img.staticmb.com/mbimages/project/17401233883491679996611687Brochure-Imperail-Ville.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5110089": {
+"url": "https://img.staticmb.com/mbimages/project/16151930404215th_avenue_brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 22,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+12.0,
+14.75
+]
+},
+{
+"label": "M.BED ROOM",
+"ft": [
+12.75,
+16.0
+]
+}
+]
+}
+]
+},
+"s5117153": {
+"url": "https://img.staticmb.com/mbimages/project/1534407305038bb.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5333017": {
+"url": "https://img.staticmb.com/mbimages/project/1656651717463Janki-Royale.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5099357": {
+"url": "https://img.staticmb.com/mbimages/project/1575628246905SUKHLAL-ANANDAM-BROCHURE-(Final).pdf",
+"status": "read",
+"pages": [
+{
+"page": 5,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+11.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+10.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+10.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+11.0
+]
+}
+]
+}
+]
+},
+"s5427455": {
+"url": "https://img.staticmb.com/mbimages/project/1740679262108Broucher-Emerald-Suite.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5454183": {
+"url": "https://img.staticmb.com/mbimages/project/1784177613366The-Velocity.pdf",
+"status": "read",
+"pages": [
+{
+"page": 9,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.583,
+15.083
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.583
+]
+}
+]
+}
+]
+},
+"s5453561": {
+"url": "https://img.staticmb.com/mbimages/project/1783338204441AARADHYA_WHATSAPP_VIEW_FINAL-(1)_11zon_11zon.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5430659": {
+"url": "https://img.staticmb.com/mbimages/project/1745302315999Shri-Balaji-Heights-V-brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5216131": {
+"url": "https://img.staticmb.com/mbimages/project/1618231498920Navkar-Ebrochaure-Compress-(1).pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5434935": {
+"url": "https://img.staticmb.com/mbimages/project/1754386837553City-Home-Residency_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5121333": {
+"url": "https://img.staticmb.com/mbimages/project/1547789777929prodfdbksystem_28d6eb28-be88-4273-9b4c-0cecd86ba9a0.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5419289": {
+"url": "https://img.staticmb.com/mbimages/project/1776164422779Trifold-Brochure_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5446715": {
+"url": "https://img.staticmb.com/mbimages/project/1774032528817SATYAM-3-.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5455483": {
+"url": "https://img.staticmb.com/mbimages/project/1786029572307bro.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5082811": {
+"url": "https://img.staticmb.com/mbimages/project/1691660987929229265110O-1589906154435.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5429799": {
+"url": "https://img.staticmb.com/mbimages/project/1745480430167E-Brochure-Imperia-Palace.pdf",
+"status": "read",
+"pages": [
+{
+"page": 30,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.583
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+}
+]
+},
+{
+"page": 34,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+12.0,
+14.5
+]
+}
+]
+},
+{
+"page": 36,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+13.0
+]
+}
+]
+}
+]
+},
+"s5430475": {
+"url": "https://img.staticmb.com/mbimages/project/1744863132173Arya-Shine-Brochure_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5458595": {
+"url": "https://img.staticmb.com/mbimages/project/1790832317393Sukham-Ecoworld-5th-Brochure_11zon.pdf",
+"status": "read",
+"pages": [
+{
+"page": 10,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.0
+]
+}
+]
+}
+]
+},
+"s5011815": {
+"url": "https://img.staticmb.com/mbimages/project/1583998516623brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 6,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM 2",
+"ft": [
+11.0,
+14.75
+]
+}
+]
+},
+{
+"page": 7,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM 1",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM 2",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+}
+]
+},
+"s5446465": {
+"url": "https://img.staticmb.com/mbimages/project/1775712604460Parth-vedansh_brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5438081": {
+"url": "https://img.staticmb.com/mbimages/project/1761801815971NITAL-E-Brochure-07-10-2025.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5387803": {
+"url": "https://img.staticmb.com/mbimages/project/1670997745119E-Brochure-Prime-Villas.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5099389": {
+"url": "https://img.staticmb.com/mbimages/project/1538216256485Vaishali-Estate-final-Q.pdf",
+"status": "read",
+"pages": [
+{
+"page": 3,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+11.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+15.25
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+13.5
+]
+}
+]
+}
+]
+},
+"s5070100": {
+"url": "https://img.staticmb.com/mbimages/project/17036520598525070100.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5332669": {
+"url": "https://img.staticmb.com/mbimages/project/1671618421237RGB-Heights-_Brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 2,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.083,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+11.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+11.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+11.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.333
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+14.25
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.083,
+14.25
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+13.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.75,
+11.0
+]
+}
+]
+}
+]
+},
+"s5336867": {
+"url": "https://img.staticmb.com/mbimages/project/1663923691446Vaishali-Jewels-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5217353": {
+"url": "https://img.staticmb.com/mbimages/project/17026357459775217353.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5217329": {
+"url": "https://img.staticmb.com/mbimages/project/17030515186755217329.pdf",
+"status": "read",
+"pages": [
+{
+"page": 4,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.0
+]
+}
+]
+},
+{
+"page": 5,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+15.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.5
+]
+}
+]
+},
+{
+"page": 7,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.667,
+12.25
+]
+}
+]
+}
+]
+},
+"s5218195": {
+"url": "https://img.staticmb.com/mbimages/project/1691564256649222218233O-1582705662273.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5026861": {
+"url": "https://img.staticmb.com/mbimages/project/1386822266699e-brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5026868": {
+"url": "https://img.staticmb.com/mbimages/project/1552643522941brochure.pdf",
+"status": "read",
+"pages": [
+{
+"page": 9,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+}
+]
+}
+]
+},
+"s5411141": {
+"url": "https://img.staticmb.com/mbimages/project/1686738005901Brochure-Elign-Heights-Bani-Park-Jaipur-(1).pdf",
+"status": "not a pdf"
+},
+"s5094201": {
+"url": "https://img.staticmb.com/mbimages/project/1472534498604SDC-Oasis.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5101849": {
+"url": "https://img.staticmb.com/mbimages/project/17053808406115101849.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5023692": {
+"url": "https://img.staticmb.com/mbimages/project/1386227094280Ebroucher.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5124997": {
+"url": "https://img.staticmb.com/mbimages/project/1563441765394Karauli-Mansion-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5124985": {
+"url": "https://img.staticmb.com/mbimages/project/1563437987561harmony_brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5023741": {
+"url": "https://img.staticmb.com/mbimages/project/1398155949938Brochure_NEW_Change.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5072925": {
+"url": "https://img.staticmb.com/mbimages/project/1650513876710Broucher-Hare-Krishna-Homes.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5120943": {
+"url": "https://img.staticmb.com/mbimages/project/1546581920549brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5098189": {
+"url": "https://img.staticmb.com/mbimages/project/17006452007595098189.pdf",
+"status": "read",
+"pages": [
+{
+"page": 22,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.5,
+14.0
+]
+}
+]
+}
+]
+},
+"s5417033": {
+"url": "https://img.staticmb.com/mbimages/project/1748857979419A3Logics-Eklavya-Brochure-(1)-(4).pdf",
+"status": "read",
+"pages": [
+{
+"page": 6,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+16.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+16.0
+]
+}
+]
+}
+]
+},
+"s5298009": {
+"url": "https://img.staticmb.com/mbimages/project/17031385499735298009.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5177671": {
+"url": "https://img.staticmb.com/mbimages/project/17043496669575177671.pdf",
+"status": "read",
+"pages": [
+{
+"page": 10,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.0,
+12.5
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.25,
+13.583
+]
+}
+]
+}
+]
+},
+"s5177135": {
+"url": "https://img.staticmb.com/mbimages/project/16061372802115177135_Broucher_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5316893": {
+"url": "https://img.staticmb.com/mbimages/project/1633420002692galaxy-brochure-(3).pdf",
+"status": "read",
+"pages": [
+{
+"page": 2,
+"bhk": 5,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+10.0
+]
+}
+]
+}
+]
+},
+"s5188834": {
+"url": "https://img.staticmb.com/mbimages/project/1597740938283Kirshan-Kunj.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5021161": {
+"url": "https://img.staticmb.com/mbimages/project/1455947988188b.pdf",
+"status": "read",
+"pages": [
+{
+"page": 10,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.25,
+11.5
+]
+}
+]
+}
+]
+},
+"s5190987": {
+"url": "https://img.staticmb.com/mbimages/project/1604557166345bb.pdf",
+"status": "read",
+"pages": [
+{
+"page": 17,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+13.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+13.25
+]
+}
+]
+}
+]
+},
+"s5454485": {
+"url": "https://img.staticmb.com/mbimages/project/1784633963623Brochure_11zon.pdf",
+"status": "read",
+"pages": [
+{
+"page": 7,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+11.333,
+14.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+12.0
+]
+}
+]
+}
+]
+},
+"s5417821": {
+"url": "https://img.staticmb.com/mbimages/project/1700550596295E-Brochure-Rubi-Suites-20-11-2023.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5092482": {
+"url": "https://img.staticmb.com/mbimages/project/146544317731177-place-brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5018240": {
+"url": "https://img.staticmb.com/mbimages/project/1465970996617ebrochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5175727": {
+"url": "https://img.staticmb.com/mbimages/project/17026206782625175727.pdf",
+"status": "read",
+"pages": [
+{
+"page": 3,
+"bhk": null,
+"bedrooms": [
+{
+"label": "M. BEDROOM",
+"ft": [
+12.0,
+15.0
+]
+},
+{
+"label": "M. BEDROOM",
+"ft": [
+12.0,
+15.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+12.0,
+15.0
+]
+},
+{
+"label": "M. BEDROOM",
+"ft": [
+12.0,
+15.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+12.0,
+15.0
+]
+},
+{
+"label": "BEDROOM",
+"ft": [
+12.0,
+15.0
+]
+}
+]
+}
+]
+},
+"s5230023": {
+"url": "https://img.staticmb.com/mbimages/project/1612799421211Galaxy-Developers_brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5230027": {
+"url": "https://img.staticmb.com/mbimages/project/1612858109670vrindavan-dham-new.pdf",
+"status": "read",
+"pages": [
+{
+"page": 5,
+"bhk": null,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.75,
+15.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.75,
+15.5
+]
+}
+]
+}
+]
+},
+"s5297023": {
+"url": "https://img.staticmb.com/mbimages/project/17026394743305297023.pdf",
+"status": "not a pdf"
+},
+"s5030829": {
+"url": "https://img.staticmb.com/mbimages/project/1394177384118Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5412005": {
+"url": "https://img.staticmb.com/mbimages/project/1687418674939Livasha.pdf",
+"status": "read",
+"pages": [
+{
+"page": 3,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.25,
+12.333
+]
+}
+]
+}
+]
+},
+"s5326197": {
+"url": "https://img.staticmb.com/mbimages/project/1646645350648Homeland-Vatslaya-Brochure-(1).pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5122165": {
+"url": "https://img.staticmb.com/mbimages/project/16012100764735122165_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5421347": {
+"url": "https://img.staticmb.com/mbimages/project/1717393042033SATYAM-UTOPIA.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5416515": {
+"url": "https://img.staticmb.com/mbimages/project/1691730181751VED-HEIGHTS-19.pdf",
+"status": "not a pdf"
+},
+"s5172707": {
+"url": "https://img.staticmb.com/mbimages/project/16059510202355172707_Broucher.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5040024": {
+"url": "https://img.staticmb.com/mbimages/project/15936026550515040024_Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5036654": {
+"url": "https://img.staticmb.com/mbimages/project/1538121507503bb.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5181369": {
+"url": "https://img.staticmb.com/mbimages/project/17043599336895181369.pdf",
+"status": "read",
+"pages": [
+{
+"page": 13,
+"bhk": null,
+"bedrooms": [
+{
+"label": "Bedroom",
+"ft": [
+11.0,
+13.0
+]
+}
+]
+}
+]
+},
+"s5394437": {
+"url": "https://img.staticmb.com/mbimages/project/1678349181980bb.pdf",
+"status": "read",
+"pages": [
+{
+"page": 5,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+15.833
+]
+}
+]
+},
+{
+"page": 6,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+14.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+15.833
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.25
+]
+}
+]
+},
+{
+"page": 7,
+"bhk": 2,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.5,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.5
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+}
+]
+},
+{
+"page": 8,
+"bhk": 3,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+13.5
+]
+}
+]
+}
+]
+},
+"s5392285": {
+"url": "https://img.staticmb.com/mbimages/project/1675661972660bb.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5188476": {
+"url": "https://img.staticmb.com/mbimages/project/1594184880332file.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5069885": {
+"url": "https://img.staticmb.com/mbimages/project/1401361023532guman-aura.pdf",
+"status": "read",
+"pages": [
+{
+"page": 7,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BEDROOM",
+"ft": [
+10.0,
+13.0
+]
+}
+]
+}
+]
+},
+"s5069884": {
+"url": "https://img.staticmb.com/mbimages/project/1401357373788mayfair.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5322275": {
+"url": "https://img.staticmb.com/mbimages/project/1636447041398Shyam-Heights-Brochure-(2).pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5408739": {
+"url": "https://img.staticmb.com/mbimages/project/1695635641295Platinum-Oaks--Brochure-offilie-min.pdf",
+"status": "read",
+"pages": [
+{
+"page": 4,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.583
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+11.0,
+14.583
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.75
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.75
+]
+}
+]
+},
+{
+"page": 5,
+"bhk": 4,
+"bedrooms": [
+{
+"label": "BED ROOM",
+"ft": [
+10.583,
+16.0
+]
+},
+{
+"label": "BED ROOM",
+"ft": [
+10.0,
+12.75
+]
+}
+]
+}
+]
+},
+"s5446991": {
+"url": "https://img.staticmb.com/mbimages/project/1774503860129Aurallis-Brochure.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5442983": {
+"url": "https://img.staticmb.com/mbimages/project/1768979402588Skyline-Arcadia-E-Brochure-Final-(1)_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5366091": {
+"url": "https://img.staticmb.com/mbimages/project/1668495360862Mayfair--Prime-16-PG-Final.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5455361": {
+"url": "https://img.staticmb.com/mbimages/project/1785923447768Elite_27-04-(1).pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5463079": {
+"url": "https://img.staticmb.com/mbimages/project/1795413216585Hamsa-Evara-Brochure-(1).pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5422519": {
+"url": "https://img.staticmb.com/mbimages/project/1722331310937Vishambhar-Paradise_compressed.pdf",
+"status": "no unit plans found",
+"pages": []
+},
+"s5427335": {
+"url": "https://img.staticmb.com/mbimages/project/1738774701362Parth-Sunshine.pdf",
+"status": "no unit plans found",
+"pages": []
+}
+}
+}

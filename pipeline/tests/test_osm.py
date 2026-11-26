@@ -20,3 +20,9 @@ def test_height_of():
     assert osm_fetch.height_of({"height": "60 m"}) == 60
     assert osm_fetch.height_of({"building:levels": "10"}) == 32
     assert osm_fetch.height_of({}) is None
+
+
+def test_poi_kind_does_not_misclassify_metro_hospital():
+    assert osm_fetch.poi_kind({"amenity": "hospital", "name": "Metro Hospital and Research Centre"}) == "hospital"
+    assert osm_fetch.poi_kind({"railway": "station", "station": "subway", "name": "Mansarovar"}) == "metro"
+    assert osm_fetch.poi_kind({"railway": "station", "name": "Jaipur Junction"}) == "rail"

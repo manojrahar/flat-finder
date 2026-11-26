@@ -1,8 +1,10 @@
 pipeline/cache/
 pipeline/cache_*.log
 pipeline/out/*/osm_buildings.geojson
+pipeline/.venv/
 node_modules/
 web/dist/
+.vercel/
 .DS_Store
 __pycache__/
 .pytest_cache/
