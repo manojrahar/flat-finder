@@ -11,6 +11,8 @@ export const DEFAULT_CRITERIA = {
   near: [],         // nearby keys, see NEAR
   q: '',            // name filter from search
   only: null,       // array of society ids (my list) or null
+  locality: null,   // locality prefix filter, e.g. "Vaishali Nagar"
+  pin: null,        // commute / workplace pin: { lat, lng, km, label }
   minSqft: 0,
   maxSqft: null,
   minPrice: null,   // rupees, buying
@@ -20,6 +22,9 @@ export const DEFAULT_CRITERIA = {
   maxRent: null,    // rupees per month, renting
   amenities: [],    // amenity keys, see AMENITY_KEYS
   ready: false,     // only ready to move
+  reraOnly: false,  // only projects with a valid RERA registration number
+  plansOnly: false, // only societies with checked floor plans (hand verified or OCR/AI read)
+  verifiedOnly: false, // only hand-verified primary-source societies
 };
 
 // Amenity keys -> words that identify them in portal amenity names.
@@ -116,8 +121,33 @@ export function matchUnit(u, c) {
 
 const norm = (t) => (t || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
+export function hasRera(s) {
+  const id = String(s?.rera_id || '').trim();
+  return Boolean(id && !/^(n\/?a|none|not\s+applicable|-+)$/i.test(id));
+}
+
+export function distKm(a, b) {
+  if (!a || !b || a.lat == null || a.lng == null || b.lat == null || b.lng == null) return Infinity;
+  const rad = Math.PI / 180;
+  const dLat = (b.lat - a.lat) * rad;
+  const dLng = (b.lng - a.lng) * rad;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * rad) * Math.cos(b.lat * rad) * Math.sin(dLng / 2) ** 2;
+  return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h)));
+}
+
+export function matchLocality(socLoc, filterLoc) {
+  const a = norm(socLoc);
+  const b = norm(filterLoc);
+  return Boolean(a && b && (a === b || a.startsWith(`${b} `)));
+}
+
 export function matchSociety(s, c) {
   if (c.only && !c.only.includes(s.id)) return 'no';
+  if (c.locality && !matchLocality(s.locality, c.locality)) return 'no';
+  if (c.pin && distKm(s, c.pin) > c.pin.km) return 'no';
+  if (c.reraOnly && !hasRera(s)) return 'no';
+  if (c.verifiedOnly && !s.verified) return 'no';
+  if (c.plansOnly && !s.verified && !s.ai_read) return 'no';
   if (c.q) {
     const hay = `${norm(s.name)} ${norm(s.developer)} ${norm(s.locality)}`;
     if (!norm(c.q).split(' ').every((w) => hay.includes(w))) return 'no';
@@ -174,4 +204,81 @@ export function formatINR(r) {
   if (r >= 1e7) return `₹${(r / 1e7).toFixed(2).replace(/\.?0+$/, '')} Cr`;
   if (r >= 1e5) return `₹${(r / 1e5).toFixed(1).replace(/\.0$/, '')} L`;
   return `₹${Math.round(r / 1000)}k`;
+}
+
+function medianOf(arr) {
+  if (!arr.length) return null;
+  const a = [...arr].sort((x, y) => x - y);
+  const m = Math.floor(a.length / 2);
+  return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2;
+}
+
+export function societyPsf(s) {
+  const vals = Object.values(s.prices || {}).filter((p) => p.psf && !p.flags?.buy).map((p) => p.psf);
+  return medianOf(vals) ?? s.psf_now ?? null;
+}
+
+export function smallestBedroom(s) {
+  const rooms = (s.unit_types || []).flatMap((u) => u.bedrooms || []);
+  if (!rooms.length) return null;
+  return rooms.reduce((m, r) => (r[0] < m[0] || (r[0] === m[0] && r[1] < m[1]) ? r : m));
+}
+
+export function localityBreakdown(societies, bhk = []) {
+  const groups = new Map();
+  for (const s of societies) {
+    const loc = (s.locality || '').trim();
+    if (!loc || loc.toLowerCase() === 'other') continue;
+    let g = groups.get(loc);
+    if (!g) {
+      g = { locality: loc, count: 0, lats: [], lngs: [], psfs: [], buys: [], rents: [], scores: [], plans: 0, rera: 0 };
+      groups.set(loc, g);
+    }
+    g.count++;
+    if (s.lat != null && s.lng != null) { g.lats.push(s.lat); g.lngs.push(s.lng); }
+    const psf = societyPsf(s);
+    if (psf) g.psfs.push(psf);
+    const buy = priceFor(s, 'buy', bhk);
+    if (buy?.value) g.buys.push(buy.value);
+    const rent = priceFor(s, 'rent', bhk);
+    if (rent?.value) g.rents.push(rent.value);
+    if (s.score != null) g.scores.push(s.score);
+    if (s.verified || s.ai_read) g.plans++;
+    if (hasRera(s)) g.rera++;
+  }
+  return [...groups.values()].map((g) => ({
+    locality: g.locality,
+    societies: g.count,
+    lat: medianOf(g.lats),
+    lng: medianOf(g.lngs),
+    medianPsf: medianOf(g.psfs) != null ? Math.round(medianOf(g.psfs)) : null,
+    medianBuy: medianOf(g.buys),
+    medianRent: medianOf(g.rents),
+    medianScore: medianOf(g.scores) != null ? Number(medianOf(g.scores).toFixed(1)) : null,
+    planChecked: g.plans,
+    reraRegistered: g.rera,
+  })).sort((a, b) => b.societies - a.societies);
+}
+
+export function compareRows(societies, { bhk = [], pin = null } = {}) {
+  const fmtMoney = (p, suffix = '') => (p ? `${p.estimated ? '~' : ''}${formatINR(p.value)}${suffix}` : '—');
+  const fmtNear = (n) => (n ? `${n.m >= 1000 ? `${(n.m / 1000).toFixed(1)} km` : `${Math.round(n.m)} m`}${n.name ? ` · ${n.name}` : ''}` : '—');
+  const rows = [
+    ['Locality', (s) => s.locality || '—'],
+    ['Type / Status', (s) => [s.kind, s.status, s.possession].filter(Boolean).join(' · ') || '—'],
+    ['Price / sq ft', (s) => { const v = societyPsf(s); return v ? `₹${Math.round(v).toLocaleString()}/sq ft` : '—'; }],
+    ['Buy (from)', (s) => fmtMoney(priceFor(s, 'buy', bhk))],
+    ['Rent (from)', (s) => fmtMoney(priceFor(s, 'rent', bhk), '/mo')],
+    ['Smallest bedroom', (s) => { const r = smallestBedroom(s); return r ? `${feetLabel(r[0])} × ${feetLabel(r[1])}` : 'Not read yet'; }],
+    ['Plan verification', (s) => (s.verified ? 'Verified by hand' : s.ai_read ? 'AI / OCR plan-read' : 'Unchecked')],
+    ['RERA ID', (s) => (hasRera(s) ? s.rera_id : 'Not listed')],
+    ['Flat Finder score', (s) => (s.score != null ? `${s.score}/10` : '—')],
+    ['Resident rating', (s) => (s.rating ? `★ ${s.rating.toFixed(1)} (${s.rating_count || 0})` : '—')],
+    ['Park', (s) => fmtNear(s.nearby?.park)],
+    ['Metro / Rail', (s) => fmtNear(s.nearby?.metro || s.nearby?.rail)],
+    ['Hospital', (s) => fmtNear(s.nearby?.hospital)],
+    ['Amenities', (s) => `${(s.amenities || []).length} listed`],
+  ];
+  if (pin) rows.splice(1, 0, [`From ${pin.label || 'pin'}`, (s) => `${distKm(s, pin).toFixed(1)} km`]);
+  return rows.map(([label, fn]) => ({ label, values: societies.map(fn) }));
 }

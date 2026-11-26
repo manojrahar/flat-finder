@@ -338,6 +338,52 @@ export function setBaseMode(map, mode) {
   map.setSky(mode === 'light'
     ? { 'sky-color': '#cfe3f5', 'horizon-color': '#eef3f7', 'fog-color': '#eceff1', 'sky-horizon-blend': 0.6, 'horizon-fog-blend': 0.6, 'fog-ground-blend': 0.2 }
     : { 'sky-color': '#07080b', 'horizon-color': '#1a1712', 'fog-color': '#07080b', 'sky-horizon-blend': 0.6, 'horizon-fog-blend': 0.6, 'fog-ground-blend': 0.2 });
+  if (map.getLayer('pin-line')) {
+    const col = mode === 'light' ? '#1a73e8' : '#ffd9a0';
+    map.setPaintProperty('pin-fill', 'fill-color', col);
+    map.setPaintProperty('pin-line', 'line-color', col);
+    map.setPaintProperty('pin-dot', 'circle-color', col);
+  }
+}
+
+export const AREA_CLICK_LAYERS = ['ctx-area-lbl', 'ctx-area-sub', 'lbl-place'];
+export const TRANSIT_CLICK_LAYERS = ['ctx-poi-transit', 'lbl-metro'];
+
+function circlePolygon(lng, lat, radiusM, steps = 48) {
+  const mPerLat = 111320;
+  const mPerLng = 111320 * Math.cos((lat * Math.PI) / 180);
+  const ring = [];
+  for (let i = 0; i <= steps; i++) {
+    const a = (2 * Math.PI * i) / steps;
+    ring.push([lng + (radiusM * Math.cos(a)) / mPerLng, lat + (radiusM * Math.sin(a)) / mPerLat]);
+  }
+  return ring;
+}
+
+export function setCommutePin(map, pin) {
+  if (!map?.isStyleLoaded?.() && !map?.getLayer?.('glow')) return;
+  const fc = pin
+    ? {
+        type: 'FeatureCollection',
+        features: [
+          { type: 'Feature', properties: { kind: 'ring' }, geometry: { type: 'Polygon', coordinates: [circlePolygon(pin.lng, pin.lat, pin.km * 1000)] } },
+          { type: 'Feature', properties: { kind: 'dot' }, geometry: { type: 'Point', coordinates: [pin.lng, pin.lat] } },
+        ],
+      }
+    : { type: 'FeatureCollection', features: [] };
+  if (!map.getSource('pin')) {
+    map.addSource('pin', { type: 'geojson', data: fc });
+    const col = (map.__mode || 'light') === 'light' ? '#1a73e8' : '#ffd9a0';
+    const before = map.getLayer('bld') ? 'bld' : undefined;
+    map.addLayer({ id: 'pin-fill', type: 'fill', source: 'pin', filter: ['==', ['get', 'kind'], 'ring'],
+      paint: { 'fill-color': col, 'fill-opacity': 0.1 } }, before);
+    map.addLayer({ id: 'pin-line', type: 'line', source: 'pin', filter: ['==', ['get', 'kind'], 'ring'],
+      paint: { 'line-color': col, 'line-width': 2, 'line-dasharray': [3, 2], 'line-opacity': 0.9 } }, before);
+    map.addLayer({ id: 'pin-dot', type: 'circle', source: 'pin', filter: ['==', ['get', 'kind'], 'dot'],
+      paint: { 'circle-color': col, 'circle-radius': 6.5, 'circle-stroke-width': 2.5, 'circle-stroke-color': '#ffffff' } });
+  } else {
+    map.getSource('pin').setData(fc);
+  }
 }
 
 // Let people switch off the glow, the society boundaries or the name labels when they get too busy.

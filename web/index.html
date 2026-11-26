@@ -14,6 +14,7 @@
 
   <div class="topbar">
     <button id="btn-guide" title="How this works">Guide</button>
+    <button id="btn-areas" title="Compare prices per sq ft across localities">Area prices</button>
     <button id="btn-replay" title="Replay the intro">Replay</button>
     <button id="btn-tour" title="Fly through the matches">Tour</button>
     <button id="btn-theme" title="Light or dark" aria-label="Switch light or dark"></button>
@@ -37,6 +38,8 @@
       <button class="preset" id="preset-divy">Example search</button>
     </div>
     <div class="pill" id="q-pill" hidden></div>
+    <div class="pill" id="loc-pill" hidden></div>
+    <div class="pill" id="pin-pill" hidden></div>
 
     <section>
       <div class="k">Type</div>
@@ -76,6 +79,19 @@
       <div class="chips" id="f-near"></div>
     </section>
     <section>
+      <div class="k">Commute / workplace pin</div>
+      <div class="search pin-search">
+        <input id="pin-q" type="search" placeholder="Search area / metro or drop pin" autocomplete="off" aria-label="Set workplace or landmark">
+        <ol id="pin-results" hidden></ol>
+      </div>
+      <div class="row-between">
+        <div class="seg small" id="pin-km"><button data-km="3">3 km</button><button data-km="5" class="on">5 km</button><button data-km="10">10 km</button></div>
+        <button class="chip" id="pin-pick" type="button">Pick on map</button>
+      </div>
+    </section>
+    <section>
+      <div class="k">Trust & verification</div>
+      <div class="chips" id="f-trust"></div>
       <label class="sw"><input type="checkbox" id="f-ready"> Ready to move only</label>
     </section>
     <section class="mylist">
@@ -94,7 +110,7 @@
     </div>
     <div class="k row">Results <select id="f-sort" aria-label="Sort results">
       <option value="best">Best match</option><option value="score">Flat Finder score</option><option value="rating">Resident rating</option>
-      <option value="price">Price, low to high</option><option value="listings">Most listings</option></select></div>
+      <option value="price">Price, low to high</option><option value="listings">Most listings</option><option value="distance" id="sort-dist" hidden>Distance to pin</option></select></div>
     <div id="results"></div>
 
     <div class="downloads">
@@ -154,6 +170,38 @@
     </div>
   </div>
 
+  <div class="modal" id="compare-modal" hidden>
+    <div class="sheet wide">
+      <div class="row-between">
+        <h3>Compare societies</h3>
+        <button class="iconbtn" id="compare-close" aria-label="Close">×</button>
+      </div>
+      <div class="table-wrap" id="compare-body"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="areas-modal" hidden>
+    <div class="sheet wide">
+      <div class="row-between">
+        <h3>Area price overview</h3>
+        <button class="iconbtn" id="areas-close" aria-label="Close">×</button>
+      </div>
+      <p class="fine">Medians from Magicbricks listings per locality. Click any area to filter the map and zoom straight there.</p>
+      <div class="row-between">
+        <input id="areas-q" type="search" placeholder="Filter localities" aria-label="Filter localities">
+        <select id="areas-sort" aria-label="Sort localities">
+          <option value="societies">Most societies</option>
+          <option value="psf_asc">₹/sq ft: low to high</option>
+          <option value="psf_desc">₹/sq ft: high to low</option>
+          <option value="rent_asc">Rent: low to high</option>
+          <option value="score_desc">Highest score</option>
+        </select>
+      </div>
+      <div class="table-wrap" id="areas-body"></div>
+    </div>
+  </div>
+
+  <div class="compare-bar" id="compare-bar" hidden></div>
   <div class="toast" id="toast" hidden></div>
   <div class="note" id="note"></div>
   <script type="module" src="/src/main.js"></script>

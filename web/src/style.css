@@ -303,3 +303,22 @@ body.has-card .maplibregl-ctrl-bottom-right { right: calc(var(--right-w) + var(-
 
 .prices .flagged { color: var(--muted); text-decoration: line-through dotted; }
 .flag-note { color: var(--likely); }
+
+/* comparison bar, modals, commute pin, locality table */
+.sheet.wide { width: min(880px, 100%); max-height: 85vh; overflow: hidden; }
+.table-wrap { overflow: auto; max-height: 62vh; border: 1px solid var(--line); border-radius: 12px; }
+.cmp-table, .areas-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.cmp-table th, .cmp-table td, .areas-table th, .areas-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.cmp-table th, .areas-table th { position: sticky; top: 0; background: var(--glass-strong); font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); z-index: 1; }
+.areas-table tbody tr { cursor: pointer; }
+.areas-table tbody tr:hover { background: var(--chip); }
+#areas-q, #areas-sort { background: var(--chip); border: 1px solid var(--line); border-radius: 9px; padding: 6px 10px; font-size: 12.5px; }
+#areas-q { flex: 1; }
+.compare-bar { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 12; background: var(--glass-strong); border: 1px solid var(--accent); border-radius: 999px; padding: 7px 10px 7px 14px; display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow); font-size: 12px; max-width: calc(100vw - 24px); }
+.compare-bar .names { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 340px; }
+.compare-bar .primary { padding: 5px 12px; font-size: 12px; }
+.results li .tag-wrap { display: inline-flex; align-items: center; gap: 6px; flex: none; }
+.cmpbtn { font-size: 11px; padding: 2px 7px; border-radius: 12px; border: 1px solid var(--chip-line); background: none; cursor: pointer; color: var(--muted); }
+.cmpbtn:hover, .cmpbtn.on { border-color: var(--accent); color: var(--accent); }
+body.picking-pin #map canvas { cursor: crosshair !important; }
+@media (max-width: 700px) { .compare-bar { bottom: calc(46vh + 48px); } }

@@ -1,9 +1,9 @@
 import './style.css';
 import maplibregl from 'maplibre-gl';
-import { addBaseLayers, addContextLayers, addSocietyLayers, BASE_MODES, createMap, OVERVIEW, setBaseMode, setHighlights, setSelected, setStates, startPulse } from './map.js';
+import { AREA_CLICK_LAYERS, addBaseLayers, addContextLayers, addSocietyLayers, BASE_MODES, createMap, OVERVIEW, setBaseMode, setCommutePin, setHighlights, setSelected, setStates, startPulse, TRANSIT_CLICK_LAYERS } from './map.js';
 import { searchSocieties } from './search.js';
 import { createFeed } from './feed.js';
-import { AMENITY_KEYS, DEFAULT_CRITERIA, NEAR, RANK, feetLabel, formatINR, matchSociety, matchUnit, priceFor, roomPasses } from './filters.js';
+import { AMENITY_KEYS, compareRows, DEFAULT_CRITERIA, distKm, feetLabel, formatINR, localityBreakdown, matchSociety, matchUnit, NEAR, priceFor, RANK, roomPasses } from './filters.js';
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -38,7 +38,7 @@ let crit = structuredClone(DEFAULT_CRITERIA);
 let baseMode = BASE_MODES.includes(params.get('map')) ? params.get('map') : 'light';
 let roomMode = 'off', areaUnit = 'gaj', sortBy = 'best';
 let data, byId, map, feed, selected = null, states = new Map(), tourTimer = null, cityId = 'jaipur', details = null;
-let myList = [], allAmenities = [];
+let myList = [], compareIds = [], allAmenities = [], contextFeatures = [], locStats = [], pinRadiusKm = 5, pickingPin = false;
 const highlights = { glow: true, bounds: true, labels: true, ...store.get('ff-highlights', {}) };
 
 async function boot() {
@@ -76,6 +76,9 @@ async function boot() {
   allAmenities = [...freq].sort((a, b) => b[1] - a[1]).map(([a, n]) => ({ name: a, n }));
 
   myList = params.get('list') ? params.get('list').split(',').filter((id) => byId.has(id)) : store.get(`ff-list-${cityId}`, []).filter((id) => byId.has(id));
+  compareIds = store.get(`ff-compare-${cityId}`, []).filter((id) => byId.has(id)).slice(0, 3);
+  contextFeatures = contextGeo?.features || [];
+  locStats = localityBreakdown(city.societies);
   const c = city.counts, m = city.price_model || {}, rated = city.societies.filter((s) => s.rating).length;
   const reraName = city.city.rera_name || 'RERA';
   const roomSummary = c.verified ? `${c.verified} verified from brochures and ${reraName} plans${c.ai_read ? `, ${c.ai_read} plan-read` : ''}` : `${c.ai_read || 0} plan-read from brochures and ${reraName}`;
@@ -88,6 +91,9 @@ async function boot() {
   feed = createFeed($('feed'), $('log-mode'), { events: city.events, byId });
   buildFilters();
   buildSearch();
+  buildPinControls();
+  buildAreasOverview();
+  buildCompare();
   buildList();
   buildControls();
   buildOnboarding();
@@ -111,10 +117,41 @@ async function boot() {
   // any hand on the map stops a running tour
   for (const ev of ['dragstart', 'wheel', 'touchstart']) map.on(ev, (e) => { if (e.originalEvent) stopTour(); });
   for (const l of ['bld', 'site-fill', 'glow']) {
-    map.on('click', l, (e) => { stopTour(); openSociety(e.features[0].properties.sid); });
-    map.on('mouseenter', l, () => (map.getCanvas().style.cursor = 'pointer'));
-    map.on('mouseleave', l, () => (map.getCanvas().style.cursor = ''));
+    map.on('click', l, (e) => {
+      if (pickingPin) return;
+      if (e.originalEvent) e.originalEvent._ffSoc = true;
+      stopTour();
+      openSociety(e.features[0].properties.sid);
+    });
+    map.on('mouseenter', l, () => { if (!pickingPin) map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', l, () => { if (!pickingPin) map.getCanvas().style.cursor = ''; });
   }
+  const interactiveMapLayers = [...TRANSIT_CLICK_LAYERS, ...AREA_CLICK_LAYERS].filter((id) => map.getLayer(id));
+  for (const l of interactiveMapLayers) {
+    map.on('mouseenter', l, () => { if (!pickingPin) map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', l, () => { if (!pickingPin) map.getCanvas().style.cursor = ''; });
+  }
+  map.on('click', (e) => {
+    if (pickingPin) {
+      pickingPin = false;
+      document.body.classList.remove('picking-pin');
+      $('pin-pick').classList.remove('on');
+      setCommute({ lat: e.lngLat.lat, lng: e.lngLat.lng, km: pinRadiusKm, label: 'Pinned spot' }, { fly: false });
+      return;
+    }
+    if (e.originalEvent?._ffSoc) return;
+    const hit = map.queryRenderedFeatures(e.point, { layers: interactiveMapLayers.filter((id) => map.getLayer(id)) })[0];
+    if (!hit) return;
+    const nm = hit.properties?.name || hit.properties?.['name:en'];
+    if (!nm) return;
+    stopTour();
+    if (TRANSIT_CLICK_LAYERS.includes(hit.layer.id)) {
+      const [lng, lat] = hit.geometry.coordinates;
+      setCommute({ lat, lng, km: 1.5, label: nm.replace(/^M\s+|^[•R+]\s+/, '') }, { fly: false });
+    } else {
+      setLocality(nm, { fly: false });
+    }
+  });
   intro();
 }
 
@@ -184,6 +221,8 @@ function dualRange(el, { min, max, step, fmt, onChange }) {
 function useCriteria(c) {
   crit = structuredClone(c);
   roomMode = crit.roomArea ? 'area' : 'off';
+  setLocality(crit.locality, { fly: false, skipApply: true });
+  setCommute(crit.pin, { fly: false, skipApply: true });
   redrawFilters();
   applyFilters();
 }
@@ -219,6 +258,15 @@ function buildFilters() {
       ...custom.map((k) => chip(`${esc(allAmenities.find((a) => a.name.toLowerCase() === k.slice(2))?.name || k.slice(2))} ×`, true, () => { toggle(crit.amenities, k); redrawFilters(); applyFilters(); })),
       chip($('amen-more').hidden ? `More (${allAmenities.length})` : 'Fewer', false, () => { $('amen-more').hidden = !$('amen-more').hidden; redrawFilters(); if (!$('amen-more').hidden) { amenList(); $('amen-q').focus(); } }, 'chip more-chip'));
     $('f-near').replaceChildren(...Object.entries(NEAR).map(([k, n]) => chip(`${n.label} <small>${n.m >= 1000 ? n.m / 1000 + ' km' : n.m + ' m'}</small>`, crit.near.includes(k), () => { toggle(crit.near, k); redrawFilters(); applyFilters(); })));
+    const trustOpts = [
+      ['reraOnly', `${data.city.rera_name || 'RERA'} registered`],
+      ['plansOnly', 'Floor-plan checked'],
+      ['verifiedOnly', 'Verified by hand'],
+    ];
+    $('f-trust').replaceChildren(...trustOpts.map(([k, label]) => chip(label, !!crit[k], () => { crit[k] = !crit[k]; redrawFilters(); applyFilters(); })));
+    document.querySelectorAll('#pin-km button').forEach((b) => b.classList.toggle('on', +b.dataset.km === (crit.pin?.km || pinRadiusKm)));
+    $('sort-dist').hidden = !crit.pin;
+    if (!crit.pin && sortBy === 'distance') { sortBy = 'best'; $('f-sort').value = 'best'; }
     document.querySelectorAll('#f-mode button').forEach((b) => b.classList.toggle('on', b.dataset.m === crit.mode));
     document.querySelectorAll('#f-room-mode button').forEach((b) => b.classList.toggle('on', b.dataset.r === roomMode));
     document.querySelectorAll('#f-area-unit button').forEach((b) => b.classList.toggle('on', b.dataset.u === areaUnit));
@@ -304,6 +352,7 @@ function sorted(list) {
     rating: (a, b) => (b.rating || 0) - (a.rating || 0) || (b.rating_count || 0) - (a.rating_count || 0),
     price: (a, b) => price(a) - price(b),
     listings: (a, b) => ((b.sale_count || 0) + (b.rent_count || 0)) - ((a.sale_count || 0) + (a.rent_count || 0)),
+    distance: (a, b) => distKm(a, crit.pin) - distKm(b, crit.pin),
   }[sortBy];
   return list.sort(by);
 }
@@ -347,9 +396,15 @@ function resultItem(s) {
   const p = priceFor(s, crit.mode, crit.bhk);
   const money = p ? `${p.estimated ? '~' : ''}${formatINR(p.value)}${crit.mode === 'rent' ? '/mo' : ''}` : '';
   const how = s.verified ? ' · checked by hand' : s.ai_read ? ' · AI-read plans' : '';
-  li.innerHTML = `<span class="nm">${myList.includes(s.id) ? '★ ' : ''}${esc(s.name)}<small>${esc(s.locality || '')}${how}</small></span>
-    <span class="tag ${st}">${money}${s.score != null ? `<small>score ${s.score}</small>` : ''}</span>`;
-  li.onclick = () => { stopTour(); openSociety(s.id); };
+  const kmTxt = crit.pin ? ` · ${distKm(s, crit.pin).toFixed(1)} km` : '';
+  const inCmp = compareIds.includes(s.id);
+  li.innerHTML = `<span class="nm">${myList.includes(s.id) ? '★ ' : ''}${esc(s.name)}<small>${esc(s.locality || '')}${how}${kmTxt}</small></span>
+    <span class="tag-wrap"><span class="tag ${st}">${money}${s.score != null ? `<small>score ${s.score}</small>` : ''}</span><button class="cmpbtn ${inCmp ? 'on' : ''}" title="${inCmp ? 'Remove from compare' : 'Add to compare'}" type="button">${inCmp ? '✓' : '⇄'}</button></span>`;
+  li.onclick = (e) => {
+    if (e.target.closest('.cmpbtn')) { e.stopPropagation(); toggleCompare(s.id); return; }
+    stopTour();
+    openSociety(s.id);
+  };
   return li;
 }
 
@@ -432,11 +487,12 @@ function renderCard(s) {
   const trend = d?.trend?.length > 1 ? sparkline(d.trend) : '';
   const about = d?.description ? `<details><summary>About this project</summary><p class="fine">${esc(d.description)}</p></details>` : '';
   const inList = myList.includes(s.id);
+  const inCmp = compareIds.includes(s.id);
   const photos = d?.images?.length ? `<div class="photos">${d.images.map((im) => `<a href="${esc(im.full)}" target="_blank" rel="noopener"><img src="${esc(im.thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.remove()"></a>`).join('')}</div><div class="fine">Photos: Magicbricks, opens full size</div>` : '';
   $('card').innerHTML = `
     <div class="card-head">
       <div><span class="badge ${st}">${STATE_LABEL[st]}</span> ${s.verified ? '<span class="badge match">checked by hand</span>' : ''}${s.ai_read ? '<span class="badge likely">AI-read plans</span>' : ''}</div>
-      <div class="row-gap"><button class="iconbtn star ${inList ? 'on' : ''}" id="c-star" title="${inList ? 'Remove from my list' : 'Add to my list'}">${inList ? '★' : '☆'}</button><button class="iconbtn" id="c-close" aria-label="Close">×</button></div>
+      <div class="row-gap"><button class="cmpbtn ${inCmp ? 'on' : ''}" id="c-compare" type="button" title="Compare side by side">${inCmp ? '✓ Comparing' : '+ Compare'}</button><button class="iconbtn star ${inList ? 'on' : ''}" id="c-star" title="${inList ? 'Remove from my list' : 'Add to my list'}">${inList ? '★' : '☆'}</button><button class="iconbtn" id="c-close" aria-label="Close">×</button></div>
     </div>
     ${photos}
     <h2>${esc(s.name)}</h2>
@@ -466,6 +522,7 @@ function renderCard(s) {
   $('card').hidden = false;
   $('c-close').onclick = () => { stopTour(); closeCard(); };
   $('c-star').onclick = () => { toggle(myList, s.id); saveList(); renderCard(s); renderResults(); };
+  $('c-compare').onclick = () => toggleCompare(s.id);
   if (!details) loadDetails().then(() => { if (selected === s.id) renderCard(s); });
 }
 
@@ -698,6 +755,153 @@ function buildSearch() {
   });
 }
 
+function setLocality(name, { fly = true, skipApply = false } = {}) {
+  crit.locality = name || null;
+  $('loc-pill').hidden = !crit.locality;
+  $('loc-pill').innerHTML = crit.locality ? `Area: <b>${esc(crit.locality)}</b> <button class="iconbtn" aria-label="Clear">×</button>` : '';
+  $('loc-pill').querySelector('button')?.addEventListener('click', () => setLocality(null, { fly: false }));
+  if (skipApply) return;
+  applyFilters();
+  if (crit.locality && fly && map) {
+    const hits = data.societies.filter((s) => states.get(s.id) !== 'no');
+    if (hits.length) {
+      const b = hits.reduce((bb, s) => bb.extend([s.lng, s.lat]), new maplibregl.LngLatBounds([hits[0].lng, hits[0].lat], [hits[0].lng, hits[0].lat]));
+      map.fitBounds(b, { padding: { top: 80, bottom: 80, left: mobile ? 40 : 380, right: mobile ? 40 : 460 }, maxZoom: 14.5, bearing: 0 });
+    }
+  }
+}
+
+function setCommute(pin, { fly = true, skipApply = false } = {}) {
+  crit.pin = pin || null;
+  if (pin) pinRadiusKm = pin.km;
+  $('pin-pill').hidden = !crit.pin;
+  $('pin-pill').innerHTML = crit.pin ? `Within <b>${crit.pin.km} km</b> of <b>${esc(crit.pin.label || 'Pin')}</b> <button class="iconbtn" aria-label="Clear">×</button>` : '';
+  $('pin-pill').querySelector('button')?.addEventListener('click', () => { $('pin-q').value = ''; setCommute(null, { fly: false }); });
+  redrawFilters();
+  if (map) setCommutePin(map, crit.pin);
+  if (skipApply) return;
+  applyFilters();
+  if (crit.pin && fly && map) {
+    map.flyTo({ center: [crit.pin.lng, crit.pin.lat], zoom: crit.pin.km <= 3 ? 13.4 : crit.pin.km <= 5 ? 12.6 : 11.8, bearing: 0, duration: 1200 });
+  }
+}
+
+function buildPinControls() {
+  const input = $('pin-q'), list = $('pin-results');
+  const pois = contextFeatures.filter((f) => f.properties?.fk === 'poi' && f.properties?.name)
+    .map((f) => ({ name: f.properties.name, sub: f.properties.cls, lat: f.geometry.coordinates[1], lng: f.geometry.coordinates[0] }));
+  const locs = locStats.filter((l) => l.lat != null && l.lng != null)
+    .map((l) => ({ name: l.locality, sub: `${l.societies} societies`, lat: l.lat, lng: l.lng }));
+  const allPlaces = [...locs, ...pois];
+  const close = () => { list.hidden = true; };
+  const render = () => {
+    const q = input.value.trim().toLowerCase();
+    const hits = (q ? allPlaces.filter((p) => p.name.toLowerCase().includes(q)) : allPlaces).slice(0, 7);
+    if (!hits.length) {
+      list.innerHTML = '<li class="empty">No matching area or station</li>';
+      list.hidden = !q;
+      return;
+    }
+    list.replaceChildren(...hits.map((h) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<span>${esc(h.name)}</span><span class="tag">${esc(h.sub)}</span>`;
+      li.onmousedown = (e) => {
+        e.preventDefault();
+        input.value = h.name;
+        close();
+        input.blur();
+        setCommute({ lat: h.lat, lng: h.lng, km: pinRadiusKm, label: h.name });
+      };
+      return li;
+    }));
+    list.hidden = false;
+  };
+  input.oninput = render;
+  input.onfocus = render;
+  input.onblur = close;
+  document.querySelectorAll('#pin-km button').forEach((b) => (b.onclick = () => {
+    pinRadiusKm = +b.dataset.km;
+    if (crit.pin) setCommute({ ...crit.pin, km: pinRadiusKm }, { fly: false });
+    else redrawFilters();
+  }));
+  $('pin-pick').onclick = () => {
+    pickingPin = !pickingPin;
+    document.body.classList.toggle('picking-pin', pickingPin);
+    $('pin-pick').classList.toggle('on', pickingPin);
+    if (pickingPin) toast('Click any point on the map to set your commute pin.');
+  };
+}
+
+function buildAreasOverview() {
+  const render = () => {
+    const stats = localityBreakdown(data.societies, crit.bhk);
+    const q = $('areas-q').value.trim().toLowerCase();
+    const sortKey = $('areas-sort').value;
+    const rows = stats.filter((l) => !q || l.locality.toLowerCase().includes(q)).sort({
+      societies: (a, b) => b.societies - a.societies,
+      psf_asc: (a, b) => (a.medianPsf ?? Infinity) - (b.medianPsf ?? Infinity),
+      psf_desc: (a, b) => (b.medianPsf ?? -1) - (a.medianPsf ?? -1),
+      rent_asc: (a, b) => (a.medianRent ?? Infinity) - (b.medianRent ?? Infinity),
+      score_desc: (a, b) => (b.medianScore ?? -1) - (a.medianScore ?? -1),
+    }[sortKey]).slice(0, 120);
+    const tbl = document.createElement('table');
+    tbl.className = 'areas-table';
+    tbl.innerHTML = '<thead><tr><th>Locality</th><th>Societies</th><th>₹ / sq ft</th><th>Buy median</th><th>Rent / mo</th><th>Score</th></tr></thead>';
+    const tbody = document.createElement('tbody');
+    for (const l of rows) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td><b>${esc(l.locality)}</b></td><td>${l.societies}</td><td>${l.medianPsf ? '₹' + l.medianPsf.toLocaleString() : '—'}</td><td>${l.medianBuy ? formatINR(l.medianBuy) : '—'}</td><td>${l.medianRent ? formatINR(l.medianRent) : '—'}</td><td>${l.medianScore ?? '—'}</td>`;
+      tr.onclick = () => { $('areas-modal').hidden = true; setLocality(l.locality); };
+      tbody.appendChild(tr);
+    }
+    tbl.appendChild(tbody);
+    $('areas-body').replaceChildren(tbl);
+  };
+  $('btn-areas').onclick = () => { render(); $('areas-modal').hidden = false; $('areas-q').focus(); };
+  $('areas-close').onclick = () => ($('areas-modal').hidden = true);
+  $('areas-q').oninput = render;
+  $('areas-sort').onchange = render;
+}
+
+function toggleCompare(sid) {
+  const i = compareIds.indexOf(sid);
+  if (i >= 0) compareIds.splice(i, 1);
+  else if (compareIds.length >= 3) { toast('You can compare up to 3 societies at once.'); return; }
+  else compareIds.push(sid);
+  store.set(`ff-compare-${cityId}`, compareIds);
+  renderCompareBar();
+  renderResults();
+  if (selected) renderCard(byId.get(selected));
+  if (!$('compare-modal').hidden) renderCompareModal();
+}
+
+function renderCompareBar() {
+  const socs = compareIds.map((id) => byId.get(id)).filter(Boolean);
+  $('compare-bar').hidden = !socs.length;
+  if (!socs.length) return;
+  $('compare-bar').innerHTML = `<span class="names">Compare (${socs.length}/3): <b>${socs.map((s) => esc(s.name)).join(' vs ')}</b></span>`
+    + `<button class="primary" id="cmp-open">Compare</button><button class="linkbtn" id="cmp-clear">Clear</button>`;
+  $('cmp-open').onclick = () => { renderCompareModal(); $('compare-modal').hidden = false; };
+  $('cmp-clear').onclick = () => { compareIds = []; store.set(`ff-compare-${cityId}`, []); renderCompareBar(); renderResults(); if (selected) renderCard(byId.get(selected)); };
+}
+
+function renderCompareModal() {
+  const socs = compareIds.map((id) => byId.get(id)).filter(Boolean);
+  if (!socs.length) { $('compare-modal').hidden = true; return; }
+  const rows = compareRows(socs, { bhk: crit.bhk, pin: crit.pin });
+  const head = socs.map((s) => `<th>${esc(s.name)} <button class="linkbtn cmp-rm" data-id="${s.id}">×</button></th>`).join('');
+  const body = rows.map((r) => `<tr><td><b>${esc(r.label)}</b></td>${r.values.map((v) => `<td>${esc(v)}</td>`).join('')}</tr>`).join('');
+  const actions = `<tr><td></td>${socs.map((s) => `<td><button class="ghost cmp-go" data-id="${s.id}">Open card</button></td>`).join('')}</tr>`;
+  $('compare-body').innerHTML = `<table class="cmp-table"><thead><tr><th>Metric</th>${head}</tr></thead><tbody>${body}${actions}</tbody></table>`;
+  $('compare-body').querySelectorAll('.cmp-rm').forEach((b) => (b.onclick = () => toggleCompare(b.dataset.id)));
+  $('compare-body').querySelectorAll('.cmp-go').forEach((b) => (b.onclick = () => { $('compare-modal').hidden = true; openSociety(b.dataset.id); }));
+}
+
+function buildCompare() {
+  $('compare-close').onclick = () => ($('compare-modal').hidden = true);
+  renderCompareBar();
+}
+
 function setQuery(q) {
   crit.q = q;
   $('q-pill').hidden = !q;
@@ -740,6 +944,12 @@ function tour() {
   };
   next();
 }
-addEventListener('keydown', (e) => { if (e.key === 'Escape') stopTour(); });
+addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  stopTour();
+  if (pickingPin) { pickingPin = false; document.body.classList.remove('picking-pin'); $('pin-pick').classList.remove('on'); }
+  $('compare-modal').hidden = true;
+  $('areas-modal').hidden = true;
+});
 
 boot().catch((e) => { console.error(e); document.title = 'ERR ' + e.message; });

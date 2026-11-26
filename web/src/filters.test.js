@@ -119,6 +119,57 @@ describe('units read by Jev from floor plans', () => {
   });
 });
 
+import { compareRows, distKm, hasRera, localityBreakdown, matchLocality } from './filters.js';
+
+describe('trust, commute pin, locality breakdown, and comparison helpers', () => {
+  const s1 = soc({
+    id: 'a', name: 'Alpha', locality: 'Vaishali Nagar', lat: 26.906, lng: 75.736,
+    rera_id: 'RAJ/P/2017/038', verified: true, ai_read: false, score: 8.4, rating: 4.5, rating_count: 12,
+    unit_types: [{ bhk: 3, bedrooms: [[11.5, 13]], rooms_complete: true }],
+    prices: { 3: { buy: { median: 1.5e7, n: 4 }, rent: { median: 38000 }, psf: 7500 } },
+    nearby: { park: { m: 250, name: 'Central Park' } },
+  });
+  const s2 = soc({
+    id: 'b', name: 'Beta', locality: 'Vaishali Nagar West', lat: 26.920, lng: 75.710,
+    rera_id: 'Not Applicable', verified: false, ai_read: true, score: 7.2,
+    prices: { 2: { buy: { median: 8.5e6, n: 2 }, rent: { median: 22000 }, psf: 5800 } },
+  });
+  const s3 = soc({
+    id: 'c', name: 'Gamma', locality: 'Jagatpura', lat: 26.828, lng: 75.835,
+    verified: false, ai_read: false,
+  });
+
+  it('filters by RERA, floor-plan checked, and verified-only', () => {
+    expect(hasRera(s1)).toBe(true);
+    expect(hasRera(s2)).toBe(false);
+    expect(matchSociety(s2, crit({ reraOnly: true }))).toBe('no');
+    expect(matchSociety(s1, crit({ reraOnly: true }))).toBe('match');
+    expect(matchSociety(s3, crit({ plansOnly: true }))).toBe('no');
+    expect(matchSociety(s2, crit({ plansOnly: true }))).toBe('match');
+    expect(matchSociety(s2, crit({ verifiedOnly: true }))).toBe('no');
+    expect(matchSociety(s1, crit({ verifiedOnly: true }))).toBe('match');
+  });
+
+  it('filters by locality prefix and commute pin distance', () => {
+    expect(matchLocality('Vaishali Nagar Extension', 'Vaishali Nagar')).toBe(true);
+    expect(matchLocality('Jagatpura', 'Vaishali Nagar')).toBe(false);
+    expect(matchSociety(s3, crit({ locality: 'Vaishali Nagar' }))).toBe('no');
+    const pin = { lat: 26.906, lng: 75.736, km: 5, label: 'Office' };
+    expect(distKm(s1, pin)).toBeLessThan(0.1);
+    expect(matchSociety(s1, crit({ pin }))).toBe('match');
+    expect(matchSociety(s3, crit({ pin }))).toBe('no');
+  });
+
+  it('aggregates locality metrics and builds side-by-side comparison rows', () => {
+    const locs = localityBreakdown([s1, s2, s3]);
+    expect(locs[0]).toMatchObject({ locality: 'Vaishali Nagar', societies: 1, medianPsf: 7500, medianBuy: 1.5e7 });
+    const rows = compareRows([s1, s2], { pin: { lat: 26.906, lng: 75.736, km: 5, label: 'Office' } });
+    expect(rows.find((r) => r.label === 'Price / sq ft').values).toEqual(['₹7,500/sq ft', '₹5,800/sq ft']);
+    expect(rows.find((r) => r.label === 'Plan verification').values).toEqual(['Verified by hand', 'AI / OCR plan-read']);
+    expect(rows.find((r) => r.label === 'From Office').values[0]).toBe('0.0 km');
+  });
+});
+
 describe('ranges', () => {
   const s = soc({ unit_types: [{ bhk: 3, size_sqft: 2000, bedrooms: [] }], prices: { 3: { buy: { median: 3e7 }, rent: { median: 70000 } } } });
   it('home size upper end', () => {

@@ -1,0 +1,362 @@
+{
+  "_about": "Hand-verified Jaipur research from builder brochures and Magicbricks project floor plans. Rooms as printed in feet-inches like 12'10\"x16'4\".",
+  "societies": [
+    {
+      "name": "Purple Melodia",
+      "match": ["Purple Melodia"],
+      "sector": "Vaishali Nagar",
+      "note": "Bedroom dimensions read directly from official floor plans (2 BHK + Study and 3 BHK layouts).",
+      "unit_types": [
+        {
+          "label": "2 BHK + Study A 1,610",
+          "bhk": 2,
+          "super_sqft": 1610,
+          "bedrooms": ["12'0\"x13'0\"", "11'0\"x15'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/2021/11/11/Floor-Plan-25-Melodia-Jaipur-5098933_474_871.JPG",
+          "page": "plan"
+        },
+        {
+          "label": "3 BHK F-1 1,698",
+          "bhk": 3,
+          "super_sqft": 1698,
+          "bedrooms": ["10'0\"x12'6\"", "11'0\"x13'6\"", "11'4.5\"x15'6\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/2021/11/11/Floor-Plan-24-Melodia-Jaipur-5098933_499_587.JPG",
+          "page": "plan"
+        },
+        {
+          "label": "3 BHK D 1,809",
+          "bhk": 3,
+          "super_sqft": 1809,
+          "bedrooms": ["10'3\"x12'4.5\"", "13'0\"x11'0\"", "14'0\"x11'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/2021/11/11/Floor-Plan-26-Melodia-Jaipur-5098933_579_616.JPG",
+          "page": "plan"
+        }
+      ]
+    },
+    {
+      "name": "Ashiana Umang",
+      "match": ["Ashiana Umang"],
+      "sector": "Ajmer Road",
+      "unit_types": [
+        {
+          "label": "Magnolia+ 2 BHK 1,209",
+          "bhk": 2,
+          "super_sqft": 1209,
+          "carpet_sqft": 799,
+          "bedrooms": ["12'1\"x10'0\"", "14'6\"x10'4\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/2021/02/15/Floor-Plan-35-Ashiana-Umang-Jaipur-5074204_602_442.jpg",
+          "page": "plan"
+        },
+        {
+          "label": "Lavender+ 3 BHK 1,573",
+          "bhk": 3,
+          "super_sqft": 1573,
+          "carpet_sqft": 1057,
+          "bedrooms": ["13'0\"x10'0\"", "12'6\"x11'11\"", "14'0\"x11'7\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/2021/02/15/Floor-Plan-36-Ashiana-Umang-Jaipur-5074204_608_412.jpg",
+          "page": "plan"
+        }
+      ]
+    },
+    {
+      "name": "Manglam Rangoli Greens",
+      "match": ["Manglam Rangoli Greens"],
+      "sector": "Vaishali Nagar",
+      "amenities": {
+        "pool": {
+          "value": "yes",
+          "source": "https://img.staticmb.com/mbimages/project/1752044076111Manglam-Rangoli-Greens-Brochure.pdf",
+          "page": "9"
+        },
+        "club": {
+          "value": "yes",
+          "source": "https://img.staticmb.com/mbimages/project/1752044076111Manglam-Rangoli-Greens-Brochure.pdf",
+          "page": "9"
+        }
+      },
+      "unit_types": [
+        {
+          "label": "Type 1 2 BHK 1,325",
+          "bhk": 2,
+          "super_sqft": 1325,
+          "bedrooms": ["11'6\"x12'1.5\"", "11'4.5\"x14'4.5\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1752044076111Manglam-Rangoli-Greens-Brochure.pdf",
+          "page": "10"
+        },
+        {
+          "label": "Type 2 3 BHK 1,910",
+          "bhk": 3,
+          "super_sqft": 1910,
+          "bedrooms": ["11'3\"x13'8\"", "11'4.5\"x15'7.5\"", "13'6\"x11'10\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1752044076111Manglam-Rangoli-Greens-Brochure.pdf",
+          "page": "10"
+        }
+      ]
+    },
+    {
+      "name": "Ashadeep Rainbow",
+      "match": ["Ashadeep Rainbow"],
+      "sector": "Jagatpura",
+      "amenities": {
+        "club": {
+          "value": "yes",
+          "source": "https://img.staticmb.com/mbimages/project/1649240925533Ebrochure-(2-&-3-bhk).pdf",
+          "page": "9"
+        }
+      },
+      "unit_types": [
+        {
+          "label": "2 BHK 800",
+          "bhk": 2,
+          "super_sqft": 800,
+          "carpet_sqft": 535,
+          "bedrooms": ["11'0\"x10'0\"", "10'0\"x10'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1649240925533Ebrochure-(2-&-3-bhk).pdf",
+          "page": "10"
+        },
+        {
+          "label": "2 BHK 990",
+          "bhk": 2,
+          "super_sqft": 990,
+          "carpet_sqft": 626,
+          "bedrooms": ["10'x12'", "10'x12'"],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1649240925533Ebrochure-(2-&-3-bhk).pdf",
+          "page": "7"
+        },
+        {
+          "label": "3 BHK 1,214",
+          "bhk": 3,
+          "super_sqft": 1214,
+          "carpet_sqft": 777,
+          "bedrooms": ["10'x12'", "10'x12'", "10'x11'"],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1649240925533Ebrochure-(2-&-3-bhk).pdf",
+          "page": "8"
+        }
+      ]
+    },
+    {
+      "name": "Ashiana Greens",
+      "match": ["Ashiana Greens"],
+      "sector": "Sikar Road",
+      "unit_types": [
+        {
+          "label": "Type B1 2 BHK 1,250",
+          "bhk": 2,
+          "super_sqft": 1250,
+          "bedrooms": ["10'0\"x12'0\"", "10'6\"x13'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/15941322768155120035_Brochure.pdf",
+          "page": "26"
+        },
+        {
+          "label": "Type A1 3 BHK 1,600",
+          "bhk": 3,
+          "super_sqft": 1600,
+          "bedrooms": ["10'0\"x12'0\"", "10'4\"x13'0\"", "11'0\"x14'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/15941322768155120035_Brochure.pdf",
+          "page": "23"
+        }
+      ]
+    },
+    {
+      "name": "Times Residency",
+      "match": ["Times Residency"],
+      "sector": "Jagatpura",
+      "unit_types": [
+        {
+          "label": "2 BHK T2 1,254",
+          "bhk": 2,
+          "super_sqft": 1254,
+          "carpet_sqft": 716,
+          "bedrooms": ["11'0\"x12'6\"", "11'0\"x12'6\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1644321333872Times-Residency-Mini-Brochure-11-11-2021.pdf",
+          "page": "24"
+        },
+        {
+          "label": "2 BHK T1 1,389",
+          "bhk": 2,
+          "super_sqft": 1389,
+          "carpet_sqft": 841,
+          "bedrooms": ["13'0\"x11'5\"", "13'9\"x11'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1644321333872Times-Residency-Mini-Brochure-11-11-2021.pdf",
+          "page": "23"
+        },
+        {
+          "label": "2 BHK T1A 1,421",
+          "bhk": 2,
+          "super_sqft": 1421,
+          "carpet_sqft": 815,
+          "bedrooms": ["13'0\"x11'5\"", "13'9\"x11'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1644321333872Times-Residency-Mini-Brochure-11-11-2021.pdf",
+          "page": "24"
+        },
+        {
+          "label": "3 BHK T4 1,687",
+          "bhk": 3,
+          "super_sqft": 1687,
+          "carpet_sqft": 1013,
+          "bedrooms": ["11'0\"x13'0\"", "11'0\"x13'0\"", "12'9\"x11'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1644321333872Times-Residency-Mini-Brochure-11-11-2021.pdf",
+          "page": "21"
+        },
+        {
+          "label": "3 BHK T3 1,738",
+          "bhk": 3,
+          "super_sqft": 1738,
+          "carpet_sqft": 1018,
+          "bedrooms": ["11'0\"x13'0\"", "11'0\"x13'0\"", "12'9\"x11'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1644321333872Times-Residency-Mini-Brochure-11-11-2021.pdf",
+          "page": "21"
+        },
+        {
+          "label": "3 BHK T5A 1,780",
+          "bhk": 3,
+          "super_sqft": 1780,
+          "carpet_sqft": 974,
+          "bedrooms": ["11'0\"x13'0\"", "11'0\"x12'0\"", "13'2\"x11'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1644321333872Times-Residency-Mini-Brochure-11-11-2021.pdf",
+          "page": "23"
+        }
+      ]
+    },
+    {
+      "name": "Aashish Aamor",
+      "match": ["Aashish Aamor"],
+      "sector": "Mansarovar Extension",
+      "unit_types": [
+        {
+          "label": "1 BHK EWS 380",
+          "bhk": 1,
+          "super_sqft": 380,
+          "bedrooms": ["10'0\"x9'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1638172543841Aamor_A-3-Brochure_-02-07-2021.pdf",
+          "page": "3"
+        },
+        {
+          "label": "2 BHK LIG 570",
+          "bhk": 2,
+          "super_sqft": 570,
+          "bedrooms": ["9'6\"x10'0\"", "10'0\"x11'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1638172543841Aamor_A-3-Brochure_-02-07-2021.pdf",
+          "page": "3"
+        }
+      ]
+    },
+    {
+      "name": "ARG Ananta",
+      "match": ["ARG Ananta"],
+      "sector": "Ajmer Road",
+      "unit_types": [
+        {
+          "label": "2 BHK 839",
+          "bhk": 2,
+          "super_sqft": 839,
+          "bedrooms": ["11'0\"x10'0\"", "12'0\"x10'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1472206612667CDT-MS.pdf",
+          "page": "7"
+        }
+      ]
+    },
+    {
+      "name": "Shiv Shakti Shivraj Residency",
+      "match": ["Shiv Shakti Shivraj Residency"],
+      "sector": "Ajmer Road",
+      "unit_types": [
+        {
+          "label": "2 BHK 1,386",
+          "bhk": 2,
+          "super_sqft": 1386,
+          "carpet_sqft": 919,
+          "bedrooms": ["11'x13'", "11'x14'9\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1583998516623brochure.pdf",
+          "page": "6"
+        },
+        {
+          "label": "3 BHK 1,765",
+          "bhk": 3,
+          "super_sqft": 1765,
+          "carpet_sqft": 1181,
+          "bedrooms": ["13'x11'", "13'x11'", "15'7\"x11'10\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1583998516623brochure.pdf",
+          "page": "7"
+        }
+      ]
+    },
+    {
+      "name": "Okay Solitaire Suites",
+      "match": ["Okay Solitaire Suites"],
+      "sector": "Jagatpura",
+      "unit_types": [
+        {
+          "label": "1 BHK Studio 403",
+          "bhk": 1,
+          "super_sqft": 403,
+          "carpet_sqft": 261,
+          "bedrooms": ["16'0\"x11'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1632804093725E-Brochure-Solitaire-Suites.pdf",
+          "page": "6"
+        },
+        {
+          "label": "1 BHK Studio 424",
+          "bhk": 1,
+          "super_sqft": 424,
+          "carpet_sqft": 276,
+          "bedrooms": ["16'0\"x11'7.5\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1632804093725E-Brochure-Solitaire-Suites.pdf",
+          "page": "6"
+        }
+      ]
+    },
+    {
+      "name": "Purple Symphonia",
+      "match": ["Purple Symphonia"],
+      "sector": "Vaishali Nagar",
+      "unit_types": [
+        {
+          "label": "2 BHK 1,037",
+          "bhk": 2,
+          "super_sqft": 1037,
+          "carpet_sqft": 655,
+          "bedrooms": ["10'0\"x12'0\"", "13'0\"x11'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1509169763639b.pdf",
+          "page": "11"
+        },
+        {
+          "label": "3 BHK A 1,404",
+          "bhk": 3,
+          "super_sqft": 1404,
+          "carpet_sqft": 904,
+          "bedrooms": ["13'0\"x10'0\"", "13'0\"x10'0\"", "11'0\"x12'0\""],
+          "confidence": "primary",
+          "source": "https://img.staticmb.com/mbimages/project/1509169763639b.pdf",
+          "page": "11"
+        }
+      ]
+    }
+  ]
+}
