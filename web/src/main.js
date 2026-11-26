@@ -1,6 +1,6 @@
 import './style.css';
 import maplibregl from 'maplibre-gl';
-import { addBaseLayers, addSocietyLayers, BASE_MODES, createMap, OVERVIEW, setBaseMode, setHighlights, setSelected, setStates, startPulse } from './map.js';
+import { addBaseLayers, addContextLayers, addSocietyLayers, BASE_MODES, createMap, OVERVIEW, setBaseMode, setHighlights, setSelected, setStates, startPulse } from './map.js';
 import { searchSocieties } from './search.js';
 import { createFeed } from './feed.js';
 import { AMENITY_KEYS, DEFAULT_CRITERIA, NEAR, RANK, feetLabel, formatINR, matchSociety, matchUnit, priceFor, roomPasses } from './filters.js';
@@ -35,7 +35,7 @@ const cityUi = () => CITY_UI[cityId] || { preset: 'Load example search', placeho
 const STATE_LABEL = { match: 'Matches your search', likely: 'Likely match', probable: 'Probably fits (estimated)', unknown: 'Not checked yet', no: 'Does not match' };
 
 let crit = structuredClone(DEFAULT_CRITERIA);
-let baseMode = BASE_MODES.includes(params.get('map')) ? params.get('map') : 'streets';
+let baseMode = BASE_MODES.includes(params.get('map')) ? params.get('map') : 'light';
 let roomMode = 'off', areaUnit = 'gaj', sortBy = 'best';
 let data, byId, map, feed, selected = null, states = new Map(), tourTimer = null, cityId = 'jaipur', details = null;
 let myList = [], allAmenities = [];
@@ -45,9 +45,22 @@ async function boot() {
   const cities = await fetch('/data/cities.json').then((r) => r.json()).catch(() => ({ jaipur: { name: 'Jaipur' } }));
   const fallbackCity = cities.jaipur ? 'jaipur' : Object.keys(cities)[0] || 'gurgaon';
   cityId = cities[params.get('city')] ? params.get('city') : fallbackCity;
-  const [city, shapes] = await Promise.all([
+  if (cities[cityId]?.center) OVERVIEW.center = cities[cityId].center;
+  if (cities[cityId]?.zoom) OVERVIEW.zoom = cities[cityId].zoom;
+
+  let styleReady = null;
+  try {
+    map = createMap('map', { mobile, mode: baseMode });
+    window.__map = map; // handy for debugging in the console
+    styleReady = new Promise((res) => map.once('style.load', res));
+  } catch {
+    map = null;
+  }
+
+  const [city, shapes, contextGeo] = await Promise.all([
     fetch(`/data/${cityId}.json`).then((r) => r.json()),
     fetch(`/data/${cityId}-shapes.geojson`).then((r) => r.json()),
+    fetch(`/data/${cityId}-context.geojson`).then((r) => (r.ok ? r.json() : null)).catch(() => null),
   ]);
   data = city;
   OVERVIEW.center = city.city.center;
@@ -80,32 +93,29 @@ async function boot() {
   buildOnboarding();
   buildMobile();
   hintTilt();
-  try {
-    map = createMap('map', { mobile });
-    window.__map = map; // handy for debugging in the console
-  } catch {
+  if (!map || !styleReady) {
     $('note').textContent = 'Your browser could not start WebGL, so the 3D map is off. Filters and results still work.';
     applyFilters();
     feed.ambient();
     return;
   }
+  await styleReady;
   const points = { type: 'FeatureCollection', features: city.societies.map((s) => ({
     type: 'Feature', properties: { sid: s.id, name: s.name, show: 1 }, geometry: { type: 'Point', coordinates: [s.lng, s.lat] } })) };
-  map.once('style.load', () => {
-    addSocietyLayers(map, shapes, points);
-    addBaseLayers(map);
-    setBaseMode(map, baseMode);
-    setHighlights(map, highlights);
-    startPulse(map);
-    // any hand on the map stops a running tour
-    for (const ev of ['dragstart', 'wheel', 'touchstart']) map.on(ev, (e) => { if (e.originalEvent) stopTour(); });
-    for (const l of ['bld', 'site-fill', 'glow']) {
-      map.on('click', l, (e) => { stopTour(); openSociety(e.features[0].properties.sid); });
-      map.on('mouseenter', l, () => (map.getCanvas().style.cursor = 'pointer'));
-      map.on('mouseleave', l, () => (map.getCanvas().style.cursor = ''));
-    }
-    intro();
-  });
+  addSocietyLayers(map, shapes, points);
+  addBaseLayers(map);
+  if (contextGeo) addContextLayers(map, contextGeo);
+  setBaseMode(map, baseMode);
+  setHighlights(map, highlights);
+  startPulse(map);
+  // any hand on the map stops a running tour
+  for (const ev of ['dragstart', 'wheel', 'touchstart']) map.on(ev, (e) => { if (e.originalEvent) stopTour(); });
+  for (const l of ['bld', 'site-fill', 'glow']) {
+    map.on('click', l, (e) => { stopTour(); openSociety(e.features[0].properties.sid); });
+    map.on('mouseenter', l, () => (map.getCanvas().style.cursor = 'pointer'));
+    map.on('mouseleave', l, () => (map.getCanvas().style.cursor = ''));
+  }
+  intro();
 }
 
 function intro() {
@@ -124,11 +134,11 @@ function intro() {
     return;
   }
   setStates(map, data.societies.map((s) => [s.id, 'no']));
-  map.jumpTo({ center: [78.5, 22.5], zoom: 2.2, pitch: 0, bearing: 0 });
+  map.jumpTo({ center: OVERVIEW.center, zoom: Math.max(9.8, OVERVIEW.zoom - 1.5), pitch: 0, bearing: 0 });
   setTimeout(() => {
-    map.flyTo({ ...OVERVIEW, duration: 4250, curve: 1.6, essential: true });
-    feed.sweep(data.societies, 4500);
-  }, 250);
+    map.flyTo({ ...OVERVIEW, duration: 1600, curve: 1.4, essential: true });
+    feed.sweep(data.societies, 1800);
+  }, 150);
   map.once('moveend', () => applyFilters(true));
 }
 
@@ -574,12 +584,12 @@ const MOON = '<svg viewBox="0 0 24 24" width="16" height="16"><path d="M20 14.5A
 function setBase(mode) {
   baseMode = mode;
   document.body.dataset.base = mode;
-  if (map?.getLayer?.('st-bg')) setBaseMode(map, mode);
+  if (map?.getLayer?.('st-road')) setBaseMode(map, mode);
   document.querySelectorAll('#layers button[data-mode]').forEach((b) => b.classList.toggle('on', b.dataset.mode === mode));
   $('btn-theme').innerHTML = mode === 'light' ? MOON : SUN;
   $('btn-theme').title = mode === 'light' ? 'Dark mode' : 'Light mode';
   const q = new URLSearchParams(location.search);
-  mode === 'streets' ? q.delete('map') : q.set('map', mode);
+  mode === 'light' ? q.delete('map') : q.set('map', mode);
   history.replaceState(null, '', q.toString() ? `?${q}` : location.pathname);
 }
 

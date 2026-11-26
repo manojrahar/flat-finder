@@ -77,3 +77,22 @@ def test_in_bbox_city_agnostic():
     assert build_city.normalize_coords({"lat": 75.689, "lng": 26.910}, jaipur_bbox)["lat"] == 26.910
     assert build_city.normalize_coords({"lat": 28.4169, "lng": 76.9096}, jaipur_bbox) is None
     assert "jaipur" not in build_city.tokens("The Crest Jaipur")
+
+
+def test_build_context_features_simplifies_and_dedupes():
+    pts = [[75.7000, 26.8000], [75.7050, 26.80001], [75.7100, 26.8000]]
+    simp = build_city.simplify_line(pts)
+    assert len(simp) == 2
+    cfg = {"name": "Jaipur"}
+    ctx = {"ways": [{"kind": "road", "cls": "trunk", "name": "Tonk Road", "pts": pts}],
+           "places": [{"name": "Vaishali Nagar", "cls": "suburb", "lng": 75.736, "lat": 26.906}]}
+    socs = [{"locality": "Vaishali Nagar", "lng": 75.736, "lat": 26.906} for _ in range(5)] + [
+        {"locality": "Jagatpura", "lng": 75.835, "lat": 26.828} for _ in range(4)]
+    pois = [{"k": "metro", "name": "Mansarovar Metro", "lng": 75.75, "lat": 26.879},
+            {"k": "park", "name": "Park", "lng": 75.76, "lat": 26.88}]  # generic "Park" skipped
+    feats = build_city.build_context_features("jaipur", cfg, socs, ctx, pois)
+    areas = [f["properties"]["name"] for f in feats if f["properties"]["fk"] == "area"]
+    poi_names = [f["properties"]["name"] for f in feats if f["properties"]["fk"] == "poi"]
+    assert "Vaishali Nagar" in areas and areas.count("Vaishali Nagar") == 1
+    assert "Jagatpura" in areas
+    assert poi_names == ["Mansarovar Metro"]

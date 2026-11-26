@@ -1,1 +1,1 @@
-{"gurgaon": {"name": "Gurugram"}, "jaipur": {"name": "Jaipur"}}
+{"gurgaon": {"name": "Gurugram", "center": [77.065, 28.425], "zoom": 12.4}, "jaipur": {"name": "Jaipur", "center": [75.79, 26.885], "zoom": 12.0}}

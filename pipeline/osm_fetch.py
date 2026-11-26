@@ -138,6 +138,14 @@ POI_QUERY = """[out:json][timeout:280];(
 );out center tags;"""
 
 
+CONTEXT_QUERY = """[out:json][timeout:120];(
+  way["highway"~"^(motorway|trunk|primary|secondary)$"]{bb};
+  way["highway"="tertiary"]["name"]{bb};
+  way["railway"~"^(subway|light_rail|rail)$"]{bb};
+  node["place"~"^(city|town|suburb|quarter|neighbourhood|locality)$"]["name"]{bb};
+);out body geom qt;"""
+
+
 def poi_kind(t):
     if t.get("leisure") == "park":
         return "park"
@@ -169,9 +177,37 @@ def fetch_pois():
     print("pois", Counter(p["k"] for p in out))
 
 
+def fetch_context():
+    """Fetch major roads, rail/metro lines, and named places for always-on map context."""
+    s, w, n, e = BBOX
+    data = overpass(CONTEXT_QUERY.replace("{bb}", f"({s},{w},{n},{e})"), "context")
+    ways, places = [], []
+    for el in data["elements"]:
+        t = el.get("tags", {})
+        if el["type"] == "node" and t.get("place"):
+            name = t.get("name:en") or t.get("name")
+            if name:
+                places.append({"name": name, "cls": t["place"], "lng": round(el["lon"], 5), "lat": round(el["lat"], 5)})
+        elif el["type"] == "way" and el.get("geometry"):
+            pts = [[round(p["lon"], 5), round(p["lat"], 5)] for p in el["geometry"]]
+            if len(pts) < 2:
+                continue
+            name = t.get("name:en") or t.get("name") or t.get("ref") or ""
+            if t.get("highway"):
+                ways.append({"kind": "road", "cls": t["highway"], "name": name, "pts": pts})
+            elif t.get("railway"):
+                ways.append({"kind": "rail", "cls": t["railway"], "name": name, "pts": pts})
+    OUT.mkdir(parents=True, exist_ok=True)
+    (OUT / "osm_context.json").write_text(json.dumps({"ways": ways, "places": places}))
+    print("context", CITY, "ways", len(ways), "places", len(places))
+
+
 if __name__ == "__main__":
     if "pois" in sys.argv:
         fetch_pois()
+    elif "context" in sys.argv:
+        fetch_context()
     else:
         main()
         fetch_pois()
+        fetch_context()

@@ -494,11 +494,140 @@ def main(city="gurgaon"):
         if "h" in f["properties"]:
             f["properties"]["h"] = round(f["properties"]["h"])
     (WEB / f"{city}-shapes.geojson").write_text(json.dumps({"type": "FeatureCollection", "features": shapes}, separators=(",", ":")))
+    ctx_f = OUT / city / "osm_context.json"
+    poi_f = OUT / city / "osm_pois.json"
+    ctx_data = json.loads(ctx_f.read_text()) if ctx_f.exists() else None
+    pois_data = json.loads(poi_f.read_text()) if poi_f.exists() else None
+    if ctx_data or pois_data:
+        ctx_feats = build_context_features(city, cfg, societies, ctx_data, pois_data)
+        (WEB / f"{city}-context.geojson").write_text(json.dumps({"type": "FeatureCollection", "features": ctx_feats}, separators=(",", ":")))
     from collections import Counter
+    write_cities_index()
+    print(doc["counts"], Counter(s["shape"] for s in societies), Counter(s["kind"] for s in societies), "features", len(shapes))
+
+
+def _perp_dist(pt, a, b):
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    if dx == 0 and dy == 0:
+        return math.hypot(pt[0] - a[0], pt[1] - a[1])
+    t = max(0.0, min(1.0, ((pt[0] - a[0]) * dx + (pt[1] - a[1]) * dy) / (dx * dx + dy * dy)))
+    return math.hypot(pt[0] - (a[0] + t * dx), pt[1] - (a[1] + t * dy))
+
+
+def simplify_line(pts, tol=0.00012):
+    """Douglas-Peucker simplification with 4-decimal rounding (~11 m) for compact road GeoJSON."""
+    if len(pts) <= 2:
+        out = [[round(x, 4), round(y, 4)] for x, y in pts]
+        return out if len(out) >= 2 and out[0] != out[-1] else []
+    a, b = pts[0], pts[-1]
+    idx, dmax = 0, 0.0
+    for i in range(1, len(pts) - 1):
+        d = _perp_dist(pts[i], a, b)
+        if d > dmax:
+            idx, dmax = i, d
+    if dmax > tol:
+        left = simplify_line(pts[: idx + 1], tol)
+        right = simplify_line(pts[idx:], tol)
+        joined = (left[:-1] if left else []) + right
+    else:
+        joined = [[round(a[0], 4), round(a[1], 4)], [round(b[0], 4), round(b[1], 4)]]
+    dedup = []
+    for p in joined:
+        if not dedup or p != dedup[-1]:
+            dedup.append(p)
+    return dedup if len(dedup) >= 2 else []
+
+
+_PLACE_TIER = {"city": 1, "town": 1, "suburb": 1, "quarter": 2, "neighbourhood": 3, "locality": 3}
+_ROAD_TIER = {"motorway": 1, "trunk": 1, "primary": 2, "secondary": 3, "tertiary": 4}
+_POI_GENERIC = {"park", "garden", "hospital", "school", "mall", "market", "central park"}
+_POI_SORT = {"metro": 10, "rail": 15, "shopping": 30, "park": 40, "hospital": 50}
+
+
+def build_context_features(city, cfg, societies, ctx_data=None, pois=None):
+    """Build compact GeoJSON features for roads, railways, localities/areas, and major landmarks."""
+    feats = []
+    if ctx_data:
+        for w in ctx_data.get("ways", []):
+            pts = simplify_line(w.get("pts") or [])
+            if len(pts) < 2:
+                continue
+            kind = w.get("kind", "road")
+            cls = w.get("cls", "")
+            props = {"fk": kind, "cls": cls, "tier": _ROAD_TIER.get(cls, 4 if kind == "road" else 3)}
+            if w.get("name"):
+                props["name"] = w["name"]
+            feats.append({"type": "Feature", "properties": props, "geometry": {"type": "LineString", "coordinates": pts}})
+
+    places_seen = []
+    city_norm = re.sub(r"[^a-z0-9]+", " ", cfg["name"].lower()).strip()
+
+    def add_area(name, lng, lat, tier, sort_key):
+        norm = re.sub(r"[^a-z0-9]+", " ", (name or "").lower()).strip()
+        if not norm or norm == "other" or (norm == city_norm and tier > 1):
+            return
+        for sn, slng, slat in places_seen:
+            if (sn == norm or norm in sn or sn in norm) and geo.dist_m((lng, lat), (slng, slat)) < 1100:
+                return
+        places_seen.append((norm, lng, lat))
+        feats.append({"type": "Feature",
+                      "properties": {"fk": "area", "name": name, "tier": tier, "sk": sort_key},
+                      "geometry": {"type": "Point", "coordinates": [round(lng, 4), round(lat, 4)]}})
+
+    if ctx_data:
+        for p in ctx_data.get("places", []):
+            t = _PLACE_TIER.get(p.get("cls"), 3)
+            add_area(p["name"], p["lng"], p["lat"], t, t * 20)
+
+    by_loc = defaultdict(list)
+    for s in societies:
+        loc = (s.get("locality") or "").strip()
+        if loc and s.get("lng") is not None and s.get("lat") is not None:
+            by_loc[loc].append((s["lng"], s["lat"]))
+    for loc, coords in sorted(by_loc.items(), key=lambda kv: -len(kv[1])):
+        if len(coords) < 3:
+            continue
+        lng = statistics.median(c[0] for c in coords)
+        lat = statistics.median(c[1] for c in coords)
+        tier = 1 if len(coords) >= 35 else 2 if len(coords) >= 10 else 3
+        add_area(loc, lng, lat, tier, max(5, 200 - len(coords)))
+
+    if pois:
+        poi_seen = []
+        for p in pois:
+            k = p.get("k")
+            nm = (p.get("name") or "").strip()
+            if k not in _POI_SORT or len(nm) < 3 or nm.lower() in _POI_GENERIC:
+                continue
+            norm = re.sub(r"[^a-z0-9]+", " ", nm.lower()).strip()
+            if any(pk == k and pn == norm and geo.dist_m((p["lng"], p["lat"]), (plng, plat)) < 450 for pk, pn, plng, plat in poi_seen):
+                continue
+            poi_seen.append((k, norm, p["lng"], p["lat"]))
+            feats.append({"type": "Feature",
+                          "properties": {"fk": "poi", "cls": k, "name": nm, "sk": _POI_SORT[k]},
+                          "geometry": {"type": "Point", "coordinates": [round(p["lng"], 4), round(p["lat"], 4)]}})
+    return feats
+
+
+def write_cities_index():
     all_cfg = json.loads((ROOT.parent / "data" / "cities.json").read_text())
     built = sorted(p.stem for p in WEB.glob("*.json") if p.stem in all_cfg)
-    (WEB / "cities.json").write_text(json.dumps({c: {"name": all_cfg[c]["name"]} for c in built}))
-    print(doc["counts"], Counter(s["shape"] for s in societies), Counter(s["kind"] for s in societies), "features", len(shapes))
+    (WEB / "cities.json").write_text(json.dumps({
+        c: {"name": all_cfg[c]["name"], "center": all_cfg[c]["center"], "zoom": all_cfg[c]["zoom"]} for c in built
+    }))
+
+
+def write_context_for_city(city):
+    cfg = json.loads((ROOT.parent / "data" / "cities.json").read_text())[city]
+    doc = json.loads((WEB / f"{city}.json").read_text())
+    ctx_f = OUT / city / "osm_context.json"
+    poi_f = OUT / city / "osm_pois.json"
+    ctx_data = json.loads(ctx_f.read_text()) if ctx_f.exists() else None
+    pois = json.loads(poi_f.read_text()) if poi_f.exists() else None
+    feats = build_context_features(city, cfg, doc["societies"], ctx_data, pois)
+    (WEB / f"{city}-context.geojson").write_text(json.dumps({"type": "FeatureCollection", "features": feats}, separators=(",", ":")))
+    write_cities_index()
+    print("context geojson", city, "features", len(feats))
 
 
 def write_csv(soc_path, unit_path, societies):
@@ -537,4 +666,8 @@ def write_csv(soc_path, unit_path, societies):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "gurgaon")
+    city_arg = next((a for a in sys.argv[1:] if not a.startswith("-")), "gurgaon")
+    if "--context" in sys.argv:
+        write_context_for_city(city_arg)
+    else:
+        main(city_arg)
